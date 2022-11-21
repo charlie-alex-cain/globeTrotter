@@ -38,9 +38,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.submitbt3 = new System.Windows.Forms.Button();
             this.coordsgb = new System.Windows.Forms.GroupBox();
-            this.freqlocaldd = new System.Windows.Forms.ComboBox();
             this.freqlocalgb = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.freqlocaldd = new System.Windows.Forms.ComboBox();
             this.defaultlocaltickbox = new System.Windows.Forms.CheckBox();
             this.coordsgb.SuspendLayout();
             this.freqlocalgb.SuspendLayout();
@@ -127,7 +127,6 @@
             // 
             // coordsgb
             // 
-            this.coordsgb.Controls.Add(this.freqlocalgb);
             this.coordsgb.Controls.Add(this.label1);
             this.coordsgb.Controls.Add(this.long_coordstb);
             this.coordsgb.Controls.Add(this.label2);
@@ -140,20 +139,11 @@
             this.coordsgb.TabIndex = 9;
             this.coordsgb.TabStop = false;
             // 
-            // freqlocaldd
-            // 
-            this.freqlocaldd.FormattingEnabled = true;
-            this.freqlocaldd.Location = new System.Drawing.Point(36, 61);
-            this.freqlocaldd.Name = "freqlocaldd";
-            this.freqlocaldd.Size = new System.Drawing.Size(121, 24);
-            this.freqlocaldd.TabIndex = 10;
-            this.freqlocaldd.SelectedIndexChanged += new System.EventHandler(this.freqlocaldd_SelectedIndexChanged);
-            // 
             // freqlocalgb
             // 
             this.freqlocalgb.Controls.Add(this.label5);
             this.freqlocalgb.Controls.Add(this.freqlocaldd);
-            this.freqlocalgb.Location = new System.Drawing.Point(17, 37);
+            this.freqlocalgb.Location = new System.Drawing.Point(13, 140);
             this.freqlocalgb.Name = "freqlocalgb";
             this.freqlocalgb.Size = new System.Drawing.Size(196, 100);
             this.freqlocalgb.TabIndex = 11;
@@ -167,6 +157,15 @@
             this.label5.Size = new System.Drawing.Size(172, 16);
             this.label5.TabIndex = 12;
             this.label5.Text = "frequent location drop-down";
+            // 
+            // freqlocaldd
+            // 
+            this.freqlocaldd.FormattingEnabled = true;
+            this.freqlocaldd.Location = new System.Drawing.Point(36, 61);
+            this.freqlocaldd.Name = "freqlocaldd";
+            this.freqlocaldd.Size = new System.Drawing.Size(121, 24);
+            this.freqlocaldd.TabIndex = 10;
+            this.freqlocaldd.SelectedIndexChanged += new System.EventHandler(this.freqlocaldd_SelectedIndexChanged);
             // 
             // defaultlocaltickbox
             // 
@@ -183,6 +182,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(277, 341);
+            this.Controls.Add(this.freqlocalgb);
             this.Controls.Add(this.defaultlocaltickbox);
             this.Controls.Add(this.coordsgb);
             this.Controls.Add(this.submitbt3);
