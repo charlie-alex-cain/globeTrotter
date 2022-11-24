@@ -40,7 +40,7 @@ namespace Globe_Trotter_project
 
             _sSqlString = "SELECT EmployeeID FROM Employee ORDER BY EmployeeID DESC";
 
-            checkid = ReadSql(_sSqlString);
+            checkid = database.ReadSql(_sSqlString);
             if(checkid == null)
             {
                 checkid = "10000";
@@ -62,7 +62,7 @@ namespace Globe_Trotter_project
                 finalpass = encrypt_pass(pass);               
                 _sSqlString = "INSERT INTO Employee(EmployeeID, Emppassword, SurName, Email) " +
                 " Values('" + checkid + "', '" + finalpass + "', '" + Surname + "','" + email + "')";
-                ExecuteSql(_sSqlString); 
+                database.ExecuteSql(_sSqlString); 
                 done = true;
                 
                 MessageBox.Show("your employee ID is " + checkid);
@@ -88,64 +88,8 @@ namespace Globe_Trotter_project
 
         }
 
-        private const string EXAMPLEDB = "ExampleDatabase.mdb";
-        private const string CONNECTION_STRING = @"Provider=Microsoft Jet 4.0 OLE DB Provider;Data Source = " + EXAMPLEDB + ";";
-
-        void ExecuteSql(String sSqlString)
-        {
-            using (OleDbConnection connection = new OleDbConnection(CONNECTION_STRING))
-            {
-                using (OleDbCommand command = new OleDbCommand(sSqlString))
-                {
-                    command.Connection = connection;
-                    try
-                    {
-                        Console.WriteLine(sSqlString);
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        
-                        
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(sSqlString);
-                        Console.WriteLine(ex.Message);
-                    }
-                }
-            }
-        }
-        string ReadSql(String sSqlString)
-        {
-            OleDbDataReader reader = null;
-            using (OleDbConnection connection = new OleDbConnection(CONNECTION_STRING))
-            {
-                using (OleDbCommand command = new OleDbCommand(sSqlString))
-                {
-                    command.Connection = connection;
-                    try
-                    {
-                        Console.WriteLine(sSqlString);
-                        connection.Open();
-                        reader = command.ExecuteReader();
-                        if (reader.Read())
-                        {
-                            return reader.GetValue(0).ToString();
-                        }
-                        else
-                        {
-                            return null;
-                        }
-
-                        
-
-                    }
-                    catch (Exception ex)
-                    {
-                        return "error1";
-                    }
-                }
-            }
-        }
+        
+       
         int encrypt_pass(string _pass)
         {            
             List<char> letters = new List<char>(_pass);

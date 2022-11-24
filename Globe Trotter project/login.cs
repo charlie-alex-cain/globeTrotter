@@ -30,8 +30,10 @@ namespace Globe_Trotter_project
 
 
             _sSqlString = "SELECT EmpPassword FROM Employee WHERE EmployeeID = " + logid;
-            f = ReadSql(_sSqlString);
-            checkpass = Convert.ToInt32( ReadSql(_sSqlString));
+
+            f = database.ReadSql(_sSqlString);
+           
+            checkpass = Convert.ToInt32(database.ReadSql(_sSqlString));
             
 
             pass = encrypt_pass(logpass);
@@ -65,40 +67,6 @@ namespace Globe_Trotter_project
             return total;
 
         }
-        private const string EXAMPLEDB = "ExampleDatabase.mdb";
-        private const string CONNECTION_STRING = @"Provider=Microsoft Jet 4.0 OLE DB Provider;Data Source = " + EXAMPLEDB + ";";
-
-        string ReadSql(String sSqlString)
-        {
-            OleDbDataReader reader = null;
-            using (OleDbConnection connection = new OleDbConnection(CONNECTION_STRING))
-            {
-                using (OleDbCommand command = new OleDbCommand(sSqlString))
-                {
-                    command.Connection = connection;
-                    try
-                    {
-                        Console.WriteLine(sSqlString);
-                        connection.Open();
-                        reader = command.ExecuteReader();
-                        if (reader.Read())
-                        {
-                            return reader.GetValue(0).ToString();
-                        }
-                        else
-                        {
-                            return null;
-                        }
-
-
-
-                    }
-                    catch (Exception ex)
-                    {
-                        return "error1";
-                    }
-                }
-            }
-        }
+       
     }
 }

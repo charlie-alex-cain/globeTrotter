@@ -57,7 +57,7 @@ namespace Globe_Trotter_project
             _sSqlString = "SELECT LocationID FROM Location ORDER BY LocationID DESC";
             _lSqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
 
-            loID = ReadSql(_sSqlString);
+            loID = database.ReadSql(_sSqlString);
             if (loID == null)
             {
                 loID = "10000";
@@ -72,7 +72,7 @@ namespace Globe_Trotter_project
 
             _sSqlString = "INSERT INTO Location(LocationID, LocationName, Long_coords, Lat_coords) " +
                " Values('" + loID + "', '" + name + "', '" + Locoords + "','" + Lacoords + "')";
-            ExecuteSql(_sSqlString);
+            database.ExecuteSql(_sSqlString);
 
             
 
@@ -82,7 +82,7 @@ namespace Globe_Trotter_project
             start_end = Convert.ToInt32(loID);
             int currentJoID;
             
-            joID = ReadSql(_lSqlString);
+            joID = database.ReadSql(_lSqlString);
             currentJoID = Convert.ToInt32(joID);
             if (joID == null)
             {
@@ -101,8 +101,8 @@ namespace Globe_Trotter_project
                // _sSqlString = "INSERT INTO Journey(EndLocalID) " +
                //" Values('" + start_end + "')";
                 _sSqlString = "UPDATE Journey SET EndLocalID = " + start_end+ " WHERE JourneyID = " + currentJoID ;
-               
-                ExecuteSql(_sSqlString);
+
+                database.ExecuteSql(_sSqlString);
 
                 
             }
@@ -120,7 +120,7 @@ namespace Globe_Trotter_project
 
                     _sSqlString = "INSERT INTO Journey(JourneyID, StartLocalID) " +
                    " Values('" + joID + "', '" + start_end + "')";
-                    ExecuteSql(_sSqlString);
+                    database.ExecuteSql(_sSqlString);
 
                     startenter = false;
                 }
@@ -134,64 +134,10 @@ namespace Globe_Trotter_project
 
 
         }
-        private const string EXAMPLEDB = "ExampleDatabase.mdb";
-        private const string CONNECTION_STRING = @"Provider=Microsoft Jet 4.0 OLE DB Provider;Data Source = " + EXAMPLEDB + ";";
-
-        void ExecuteSql(String sSqlString)
-        {
-            using (OleDbConnection connection = new OleDbConnection(CONNECTION_STRING))
-            {
-                using (OleDbCommand command = new OleDbCommand(sSqlString))
-                {
-                    command.Connection = connection;
-                    try
-                    {
-                        Console.WriteLine(sSqlString);
-                        connection.Open();
-                        command.ExecuteNonQuery();
 
 
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(sSqlString);
-                        Console.WriteLine(ex.Message);
-                    }
-                }
-            }
-        }
-        string ReadSql(String sSqlString)
-        {
-            OleDbDataReader reader = null;
-            using (OleDbConnection connection = new OleDbConnection(CONNECTION_STRING))
-            {
-                using (OleDbCommand command = new OleDbCommand(sSqlString))
-                {
-                    command.Connection = connection;
-                    try
-                    {
-                        Console.WriteLine(sSqlString);
-                        connection.Open();
-                        reader = command.ExecuteReader();
-                        if (reader.Read())
-                        {
-                            return reader.GetValue(0).ToString();
-                        }
-                        else
-                        {
-                            return null;
-                        }
-
-
-
-                    }
-                    catch (Exception ex)
-                    {
-                        return "error1";
-                    }
-                }
-            }
-        }
+        
+       
 
         private void freqlocaldd_SelectedIndexChanged(object sender, EventArgs e)
         {
