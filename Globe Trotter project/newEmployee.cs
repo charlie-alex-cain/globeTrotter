@@ -36,7 +36,7 @@ namespace Globe_Trotter_project
             string checkid;
             int nextId;
             string _sSqlString;
-            
+            bool done = false;
 
             _sSqlString = "SELECT EmployeeID FROM Employee ORDER BY EmployeeID DESC";
 
@@ -63,6 +63,7 @@ namespace Globe_Trotter_project
                 _sSqlString = "INSERT INTO Employee(EmployeeID, Emppassword, SurName, Email) " +
                 " Values('" + checkid + "', '" + finalpass + "', '" + Surname + "','" + email + "')";
                 ExecuteSql(_sSqlString); 
+                done = true;
                 
                 MessageBox.Show("your employee ID is " + checkid);
             }
@@ -73,7 +74,13 @@ namespace Globe_Trotter_project
                 newRpasstb.Clear();
             }
 
-           
+            if (done)
+            {
+                this.Hide();
+                welcomeFr wel = new welcomeFr();
+                wel.ShowDialog();
+            }
+
         }
 
         private void newEmployeeFr_Load(object sender, EventArgs e)

@@ -79,9 +79,9 @@ namespace Globe_Trotter_project
 
             _sSqlString = "CREATE TABLE Journey ("
                                                 + "JourneyID SHORT NOT NULL,"
-                                                + "EmployeeID SHORT NOT NULL,"
+                                                + "EmployeeID SHORT,"
                                                 + "StartLocalID SHORT NOT NULL,"
-                                                + "EndLocalID SHORT NOT NULL,"
+                                                + "EndLocalID SHORT,"
                                                 + "Distance INT,"
                                                 + "DateofJourney DATE,"
                                                 + "StartTime TIME,"

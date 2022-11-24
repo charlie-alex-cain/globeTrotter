@@ -17,12 +17,12 @@ namespace Globe_Trotter_project
         {
             InitializeComponent();
         }
-
+        bool startenter = true;
         private void long_coordstb_TextChanged(object sender, EventArgs e)
         {
 
         }
-
+        
         private void frequentlocaltickbox_CheckedChanged(object sender, EventArgs e)
         {
             bool tick = frequentlocaltickbox.Checked;
@@ -38,41 +38,99 @@ namespace Globe_Trotter_project
                 freqlocalgb.Hide();
             }
         }
-
+        
         private void submitbt3_Click(object sender, EventArgs e)
         {
             int Locoords = Convert.ToInt32(long_coordstb.Text);
             int Lacoords = Convert.ToInt32(lat_coordstb.Text);
             string name = locationnametb.Text;
-            string ID;
+            string loID;
+            string joID;
             int nextid;
             bool defaultl = defaultlocaltickbox.Checked;
 
+            
+
             string _sSqlString;
+            string _lSqlString;
 
             _sSqlString = "SELECT LocationID FROM Location ORDER BY LocationID DESC";
+            _lSqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
 
-            ID = ReadSql(_sSqlString);
-            if (ID == null)
+            loID = ReadSql(_sSqlString);
+            if (loID == null)
             {
-                ID = "10000";
+                loID = "10000";
             }
             else
             {
-                nextid = Convert.ToInt32(ID) + 1;
-                ID = Convert.ToString(nextid);
+                nextid = Convert.ToInt32(loID) + 1;
+                loID = Convert.ToString(nextid);
             }
 
             
 
             _sSqlString = "INSERT INTO Location(LocationID, LocationName, Long_coords, Lat_coords) " +
-               " Values('" + ID + "', '" + name + "', '" + Locoords + "','" + Lacoords + "')";
+               " Values('" + loID + "', '" + name + "', '" + Locoords + "','" + Lacoords + "')";
             ExecuteSql(_sSqlString);
 
-            if (defaultl)
+            
+
+            
+
+            int start_end;
+            start_end = Convert.ToInt32(loID);
+            int currentJoID;
+            
+            joID = ReadSql(_lSqlString);
+            currentJoID = Convert.ToInt32(joID);
+            if (joID == null)
+            {
+                joID = "10000";
+            }
+            else
+            {
+                
+                nextid = Convert.ToInt32(joID) + 1;
+                joID = Convert.ToString(nextid);              
+            }
+            
+            if (startenter == false)
             {
 
+               // _sSqlString = "INSERT INTO Journey(EndLocalID) " +
+               //" Values('" + start_end + "')";
+                _sSqlString = "UPDATE Journey SET EndLocalID = " + start_end+ " WHERE JourneyID = " + currentJoID ;
+               
+                ExecuteSql(_sSqlString);
+
+                
             }
+
+
+            if (defaultl == true)
+            {
+                startenter = false;
+            }
+            else
+            {
+                if (startenter)
+                {
+                    
+
+                    _sSqlString = "INSERT INTO Journey(JourneyID, StartLocalID) " +
+                   " Values('" + joID + "', '" + start_end + "')";
+                    ExecuteSql(_sSqlString);
+
+                    startenter = false;
+                }
+            }
+
+            
+
+            lat_coordstb.Clear();
+            long_coordstb.Clear();
+            locationnametb.Clear();
 
 
         }
@@ -143,6 +201,7 @@ namespace Globe_Trotter_project
         private void coordsfr_Load(object sender, EventArgs e)
         {
             freqlocalgb.Hide();
+            
         }
     }
 }
