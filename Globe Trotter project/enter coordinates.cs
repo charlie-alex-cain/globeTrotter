@@ -41,12 +41,12 @@ namespace Globe_Trotter_project
         
         private void submitbt3_Click(object sender, EventArgs e)
         {
-            int Locoords = Convert.ToInt32(long_coordstb.Text);
-            int Lacoords = Convert.ToInt32(lat_coordstb.Text);
+            string Locoords = long_coordstb.Text;
+            string Lacoords = lat_coordstb.Text;
             string name = locationnametb.Text;
-            string loID;
+            string loID = "";
             string joID = "";
-            int nextid;
+            int start_end;
             bool startcoords = startcoordstickbox.Checked;
             DateTime dt = DateTime.Now;
             string datetime = dt.ToString();
@@ -57,41 +57,20 @@ namespace Globe_Trotter_project
             string _2SqlString;
 
             _sSqlString = "SELECT LocationID FROM Location ORDER BY LocationID DESC";
-            _lSqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
-
-            loID = database.ReadSql(_sSqlString);
-            if (loID == null)
-            {
-                loID = "10000";
-            }
-            else
-            {
-                nextid = Convert.ToInt32(loID) + 1;
-                loID = Convert.ToString(nextid);
-            }
+            loID = database.createID(_sSqlString, loID);
 
             _sSqlString = "INSERT INTO Location(LocationID, LocationName, Long_coords, Lat_coords) " +
                " Values('" + loID + "', '" + name + "', '" + Locoords + "','" + Lacoords + "')";
             database.ExecuteSql(_sSqlString);
 
-            int start_end;
+           
             start_end = Convert.ToInt32(loID);
-            int currentJoID;
 
             if (startcoords)
             {
-                joID = database.ReadSql(_lSqlString);
-                currentJoID = Convert.ToInt32(joID);
-                if (joID == null)
-                {
-                    joID = "10000";
-                }
-                else
-                {
-                    currentJoID = Convert.ToInt32(joID);
-                    nextid = Convert.ToInt32(joID) + 1;
-                    joID = Convert.ToString(nextid);
-                }
+                _lSqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
+                joID = database.createID(_lSqlString, joID);
+
             }
 
             if (startcoords == true)
@@ -120,6 +99,8 @@ namespace Globe_Trotter_project
             long_coordstb.Clear();
             locationnametb.Clear();
         }
+
+        
 
 
         

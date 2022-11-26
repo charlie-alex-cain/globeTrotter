@@ -40,8 +40,8 @@ namespace Globe_Trotter_project
             _sSqlString = "CREATE TABLE Location("
                                                 + "LocationID SHORT NOT NULL,"
                                                 + "LocationName VARCHAR(30),"
-                                                + "Long_coords INT,"
-                                                + "Lat_coords INT,"
+                                                + "Long_coords VARCHAR(30),"
+                                                + "Lat_coords VARCHAR(30),"
                                                 + "PRIMARY KEY (LocationID)"
                                                 + ")";
             ExecuteSql(_sSqlString);
@@ -127,6 +127,22 @@ namespace Globe_Trotter_project
                         return "error1";
                     }
                 }
+            }
+        }
+        public static string createID(string _sSqlString, string ID)
+        {
+            int nextid;
+            ID = ReadSql(_sSqlString);
+            if (ID == null)
+            {
+                ID = "10000";
+                return ID;
+            }
+            else
+            {
+                nextid = Convert.ToInt32(ID) + 1;
+                ID = Convert.ToString(nextid);
+                return ID;
             }
         }
     }

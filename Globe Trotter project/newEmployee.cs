@@ -33,23 +33,9 @@ namespace Globe_Trotter_project
 
         private void submitbt2_Click(object sender, EventArgs e)
         {
-            string checkid;
-            int nextId;
+            string checkid = "";
             string _sSqlString;
             bool done = false;
-
-            _sSqlString = "SELECT EmployeeID FROM Employee ORDER BY EmployeeID DESC";
-
-            checkid = database.ReadSql(_sSqlString);
-            if(checkid == null)
-            {
-                checkid = "10000";
-            }
-            else
-            {
-                nextId = Convert.ToInt32(checkid) + 1;
-                checkid = Convert.ToString(nextId);
-            }
 
             string email = emailtb.Text;
             string Surname = surnametb.Text;
@@ -59,6 +45,9 @@ namespace Globe_Trotter_project
             
             if (pass == repeatpass)
             {
+                _sSqlString = "SELECT EmployeeID FROM Employee ORDER BY EmployeeID DESC";
+                checkid = database.createID(_sSqlString, checkid);
+
                 finalpass = encrypt_pass(pass);               
                 _sSqlString = "INSERT INTO Employee(EmployeeID, Emppassword, SurName, Email) " +
                 " Values('" + checkid + "', '" + finalpass + "', '" + Surname + "','" + email + "')";
