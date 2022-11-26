@@ -5,18 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.OleDb;
 using ADOX;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Data.OleDb;
-using ADOX;
+
 
 namespace Globe_Trotter_project
 {
@@ -64,7 +58,7 @@ namespace Globe_Trotter_project
             _sSqlString = "CREATE TABLE Journey ("
                                                 + "JourneyID SHORT NOT NULL,"
                                                 + "EmployeeID SHORT,"
-                                                + "StartLocalID SHORT NOT NULL,"
+                                                + "StartLocalID SHORT,"
                                                 + "EndLocalID SHORT,"
                                                 + "Distance INT,"
                                                 + "DateofJourney DATE,"

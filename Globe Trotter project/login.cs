@@ -67,6 +67,12 @@ namespace Globe_Trotter_project
             return total;
 
         }
-       
+
+        private void backbt1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            welcomeFr wel = new welcomeFr();
+            wel.ShowDialog();
+        }
     }
 }

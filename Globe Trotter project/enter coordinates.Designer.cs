@@ -41,7 +41,9 @@
             this.freqlocalgb = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.freqlocaldd = new System.Windows.Forms.ComboBox();
-            this.defaultlocaltickbox = new System.Windows.Forms.CheckBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.startcoordstickbox = new System.Windows.Forms.CheckBox();
+            this.backbt2 = new System.Windows.Forms.Button();
             this.coordsgb.SuspendLayout();
             this.freqlocalgb.SuspendLayout();
             this.SuspendLayout();
@@ -98,7 +100,7 @@
             // frequentlocaltickbox
             // 
             this.frequentlocaltickbox.AutoSize = true;
-            this.frequentlocaltickbox.Location = new System.Drawing.Point(13, 41);
+            this.frequentlocaltickbox.Location = new System.Drawing.Point(0, 41);
             this.frequentlocaltickbox.Name = "frequentlocaltickbox";
             this.frequentlocaltickbox.Size = new System.Drawing.Size(152, 20);
             this.frequentlocaltickbox.TabIndex = 6;
@@ -167,27 +169,49 @@
             this.freqlocaldd.TabIndex = 10;
             this.freqlocaldd.SelectedIndexChanged += new System.EventHandler(this.freqlocaldd_SelectedIndexChanged);
             // 
-            // defaultlocaltickbox
+            // menuStrip1
             // 
-            this.defaultlocaltickbox.AutoSize = true;
-            this.defaultlocaltickbox.Location = new System.Drawing.Point(12, 77);
-            this.defaultlocaltickbox.Name = "defaultlocaltickbox";
-            this.defaultlocaltickbox.Size = new System.Drawing.Size(125, 20);
-            this.defaultlocaltickbox.TabIndex = 10;
-            this.defaultlocaltickbox.Text = "use default start ";
-            this.defaultlocaltickbox.UseVisualStyleBackColor = true;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(281, 24);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // startcoordstickbox
+            // 
+            this.startcoordstickbox.AutoSize = true;
+            this.startcoordstickbox.Location = new System.Drawing.Point(0, 77);
+            this.startcoordstickbox.Name = "startcoordstickbox";
+            this.startcoordstickbox.Size = new System.Drawing.Size(268, 20);
+            this.startcoordstickbox.TabIndex = 13;
+            this.startcoordstickbox.Text = "enter start location or default will be used";
+            this.startcoordstickbox.UseVisualStyleBackColor = true;
+            // 
+            // backbt2
+            // 
+            this.backbt2.Location = new System.Drawing.Point(151, 281);
+            this.backbt2.Name = "backbt2";
+            this.backbt2.Size = new System.Drawing.Size(118, 48);
+            this.backbt2.TabIndex = 14;
+            this.backbt2.Text = "back";
+            this.backbt2.UseVisualStyleBackColor = true;
+            this.backbt2.Click += new System.EventHandler(this.backbt2_Click);
             // 
             // coordsfr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(277, 341);
+            this.ClientSize = new System.Drawing.Size(281, 341);
+            this.Controls.Add(this.backbt2);
+            this.Controls.Add(this.startcoordstickbox);
             this.Controls.Add(this.freqlocalgb);
-            this.Controls.Add(this.defaultlocaltickbox);
             this.Controls.Add(this.coordsgb);
             this.Controls.Add(this.submitbt3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.frequentlocaltickbox);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "coordsfr";
             this.Text = "enter coordinates";
             this.Load += new System.EventHandler(this.coordsfr_Load);
@@ -215,6 +239,8 @@
         private System.Windows.Forms.ComboBox freqlocaldd;
         private System.Windows.Forms.GroupBox freqlocalgb;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox defaultlocaltickbox;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.CheckBox startcoordstickbox;
+        private System.Windows.Forms.Button backbt2;
     }
 }

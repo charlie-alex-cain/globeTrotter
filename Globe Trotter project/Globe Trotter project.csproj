@@ -84,6 +84,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="enter coordinates.resx">
       <DependentUpon>enter coordinates.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="main menu.resx">
       <DependentUpon>main menu.cs</DependentUpon>

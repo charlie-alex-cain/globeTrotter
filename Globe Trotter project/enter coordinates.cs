@@ -17,7 +17,7 @@ namespace Globe_Trotter_project
         {
             InitializeComponent();
         }
-        bool startenter = true;
+        
         private void long_coordstb_TextChanged(object sender, EventArgs e)
         {
 
@@ -45,14 +45,16 @@ namespace Globe_Trotter_project
             int Lacoords = Convert.ToInt32(lat_coordstb.Text);
             string name = locationnametb.Text;
             string loID;
-            string joID;
+            string joID = "";
             int nextid;
-            bool defaultl = defaultlocaltickbox.Checked;
-
-            
-
+            bool startcoords = startcoordstickbox.Checked;
+            DateTime dt = DateTime.Now;
+            string datetime = dt.ToString();
+            string date = datetime.Substring(0, 10);
+            string time = datetime.Substring(12, 7);
             string _sSqlString;
             string _lSqlString;
+            string _2SqlString;
 
             _sSqlString = "SELECT LocationID FROM Location ORDER BY LocationID DESC";
             _lSqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
@@ -68,71 +70,55 @@ namespace Globe_Trotter_project
                 loID = Convert.ToString(nextid);
             }
 
-            
-
             _sSqlString = "INSERT INTO Location(LocationID, LocationName, Long_coords, Lat_coords) " +
                " Values('" + loID + "', '" + name + "', '" + Locoords + "','" + Lacoords + "')";
             database.ExecuteSql(_sSqlString);
 
-            
-
-            
-
             int start_end;
             start_end = Convert.ToInt32(loID);
             int currentJoID;
-            
-            joID = database.ReadSql(_lSqlString);
-            currentJoID = Convert.ToInt32(joID);
-            if (joID == null)
-            {
-                joID = "10000";
-            }
-            else
-            {
-                
-                nextid = Convert.ToInt32(joID) + 1;
-                joID = Convert.ToString(nextid);              
-            }
-            
-            if (startenter == false)
-            {
 
-               // _sSqlString = "INSERT INTO Journey(EndLocalID) " +
-               //" Values('" + start_end + "')";
-                _sSqlString = "UPDATE Journey SET EndLocalID = " + start_end+ " WHERE JourneyID = " + currentJoID ;
-
-                database.ExecuteSql(_sSqlString);
-
-                
-            }
-
-
-            if (defaultl == true)
+            if (startcoords)
             {
-                startenter = false;
-            }
-            else
-            {
-                if (startenter)
+                joID = database.ReadSql(_lSqlString);
+                currentJoID = Convert.ToInt32(joID);
+                if (joID == null)
                 {
-                    
-
-                    _sSqlString = "INSERT INTO Journey(JourneyID, StartLocalID) " +
-                   " Values('" + joID + "', '" + start_end + "')";
-                    database.ExecuteSql(_sSqlString);
-
-                    startenter = false;
+                    joID = "10000";
+                }
+                else
+                {
+                    currentJoID = Convert.ToInt32(joID);
+                    nextid = Convert.ToInt32(joID) + 1;
+                    joID = Convert.ToString(nextid);
                 }
             }
 
-            
+            if (startcoords == true)
+            {
+                _sSqlString = "INSERT INTO Journey(JourneyID, StartLocalID, DateofJourney, StartTime) " +
+                " Values('" + joID + "', '" + start_end + "','" + date + "','" + time + "')";
+                database.ExecuteSql(_sSqlString);
 
+                startcoordstickbox.Checked = false;
+            }
+
+            if (startcoords == false)
+            {
+                _2SqlString ="SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
+                joID = database.ReadSql(_2SqlString);
+                // add default system
+                _sSqlString = "UPDATE Journey SET EndLocalID = " + start_end + ", EndTime = '" + time + "' WHERE JourneyID = " + joID;
+                database.ExecuteSql(_sSqlString);
+
+                this.Hide();
+                mainfr main = new mainfr();
+                main.ShowDialog();
+            }
+            
             lat_coordstb.Clear();
             long_coordstb.Clear();
             locationnametb.Clear();
-
-
         }
 
 
@@ -148,6 +134,13 @@ namespace Globe_Trotter_project
         {
             freqlocalgb.Hide();
             
+        }
+
+        private void backbt2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            mainfr main = new mainfr();
+            main.ShowDialog();
         }
     }
 }

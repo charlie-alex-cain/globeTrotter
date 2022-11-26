@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.backbt1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // submitbt1
@@ -87,11 +88,22 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Globe Trotter";
             // 
+            // backbt1
+            // 
+            this.backbt1.Location = new System.Drawing.Point(259, 191);
+            this.backbt1.Name = "backbt1";
+            this.backbt1.Size = new System.Drawing.Size(86, 45);
+            this.backbt1.TabIndex = 6;
+            this.backbt1.Text = "back";
+            this.backbt1.UseVisualStyleBackColor = true;
+            this.backbt1.Click += new System.EventHandler(this.backbt1_Click);
+            // 
             // loginFr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(376, 254);
+            this.Controls.Add(this.backbt1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -113,5 +125,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button backbt1;
     }
 }
