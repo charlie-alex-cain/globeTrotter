@@ -40,8 +40,8 @@ namespace Globe_Trotter_project
             _sSqlString = "CREATE TABLE Location("
                                                 + "LocationID SHORT NOT NULL,"
                                                 + "LocationName VARCHAR(30),"
-                                                + "Long_coords VARCHAR(30),"
-                                                + "Lat_coords VARCHAR(30),"
+                                                + "Long_coords INT,"
+                                                + "Lat_coords INT,"
                                                 + "PRIMARY KEY (LocationID)"
                                                 + ")";
             ExecuteSql(_sSqlString);
@@ -60,7 +60,7 @@ namespace Globe_Trotter_project
                                                 + "EmployeeID SHORT,"
                                                 + "StartLocalID SHORT,"
                                                 + "EndLocalID SHORT,"
-                                                + "Distance INT,"
+                                                + "Distance DOUBLE,"
                                                 + "DateofJourney DATE,"
                                                 + "StartTime TIME,"
                                                 + "EndTime TIME,"
