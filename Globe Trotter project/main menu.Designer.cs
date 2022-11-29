@@ -30,7 +30,7 @@
         {
             this.coordsbt = new System.Windows.Forms.Button();
             this.reportbt = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.logoutbt = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -53,15 +53,15 @@
             this.reportbt.Text = "Weekly Report";
             this.reportbt.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // logoutbt
             // 
-            this.button1.Location = new System.Drawing.Point(153, 322);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(272, 84);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Logout";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.logoutbt.Location = new System.Drawing.Point(153, 322);
+            this.logoutbt.Name = "logoutbt";
+            this.logoutbt.Size = new System.Drawing.Size(272, 84);
+            this.logoutbt.TabIndex = 2;
+            this.logoutbt.Text = "Logout";
+            this.logoutbt.UseVisualStyleBackColor = true;
+            this.logoutbt.Click += new System.EventHandler(this.logoutbt_Click);
             // 
             // label1
             // 
@@ -79,7 +79,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 450);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.logoutbt);
             this.Controls.Add(this.reportbt);
             this.Controls.Add(this.coordsbt);
             this.Name = "mainfr";
@@ -93,7 +93,7 @@
 
         private System.Windows.Forms.Button coordsbt;
         private System.Windows.Forms.Button reportbt;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button logoutbt;
         private System.Windows.Forms.Label label1;
     }
 }

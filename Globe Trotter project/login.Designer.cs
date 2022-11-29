@@ -60,6 +60,7 @@
             this.loginIDtb.Name = "loginIDtb";
             this.loginIDtb.Size = new System.Drawing.Size(333, 22);
             this.loginIDtb.TabIndex = 2;
+            this.loginIDtb.TextChanged += new System.EventHandler(this.loginIDtb_TextChanged);
             // 
             // label1
             // 

@@ -27,7 +27,8 @@ namespace Globe_Trotter_project
             string f;
 
             string _sSqlString;
-
+            
+            
 
             _sSqlString = "SELECT EmpPassword FROM Employee WHERE EmployeeID = " + logid;
 
@@ -42,7 +43,7 @@ namespace Globe_Trotter_project
             {
                 MessageBox.Show("your login was successful");
                 this.Hide();
-                mainfr main = new mainfr();
+                mainfr main = new mainfr(logid);
                 main.ShowDialog();
             }
             else
@@ -51,8 +52,11 @@ namespace Globe_Trotter_project
                 passwordtb.Clear();
                 loginIDtb.Clear();
             }
+            
 
-           
+
+
+
         }
         int encrypt_pass(string _pass)
         {
@@ -73,6 +77,11 @@ namespace Globe_Trotter_project
             this.Hide();
             welcomeFr wel = new welcomeFr();
             wel.ShowDialog();
+        }
+
+        private void loginIDtb_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

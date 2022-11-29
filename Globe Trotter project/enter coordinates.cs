@@ -13,9 +13,11 @@ namespace Globe_Trotter_project
 {
     public partial class coordsfr : Form
     {
-        public coordsfr()
+        string _logid;
+        public coordsfr(string logid)
         {
             InitializeComponent();
+            _logid = logid;
         }
         
         private void long_coordstb_TextChanged(object sender, EventArgs e)
@@ -56,6 +58,10 @@ namespace Globe_Trotter_project
             string _lSqlString;
             string _2SqlString;
             double distance;
+            int Lacoordsstart;
+            int Locoordsstart;
+            string coordsID;
+
 
             _sSqlString = "SELECT LocationID FROM Location ORDER BY LocationID DESC";
             loID = database.createID(_sSqlString, loID);
@@ -63,8 +69,7 @@ namespace Globe_Trotter_project
             _sSqlString = "INSERT INTO Location(LocationID, LocationName, Long_coords, Lat_coords) " +
                " Values('" + loID + "', '" + name + "', " + Locoords + "," + Lacoords + ")";
             database.ExecuteSql(_sSqlString);
-
-           
+      
             start_end = Convert.ToInt32(loID);
 
             if (startcoords)
@@ -73,19 +78,17 @@ namespace Globe_Trotter_project
                 joID = database.createID(_lSqlString, joID);
 
             }
+            Console.WriteLine("45"+Program.loginempID);
 
             if (startcoords == true)
             {
-                _sSqlString = "INSERT INTO Journey(JourneyID, StartLocalID, DateofJourney, StartTime) " +
-                " Values('" + joID + "', '" + start_end + "','" + date + "','" + time + "')";
+                
+                _sSqlString = "INSERT INTO Journey(JourneyID, EmployeeID, StartLocalID, DateofJourney, StartTime) " +
+                " Values('" + joID + "','" + _logid + "', '" + start_end + "','" + date + "','" + time + "')";
                 database.ExecuteSql(_sSqlString);
 
                 startcoordstickbox.Checked = false;
             }
-
-            int Lacoordsstart;
-            int Locoordsstart;
-            string coordsID; 
 
             if (startcoords == false)
             {
@@ -108,7 +111,7 @@ namespace Globe_Trotter_project
                 database.ExecuteSql(_sSqlString);
 
                 this.Hide();
-                mainfr main = new mainfr();
+                mainfr main = new mainfr(_logid);
                 main.ShowDialog();
             }
             
@@ -144,7 +147,7 @@ namespace Globe_Trotter_project
         private void backbt2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            mainfr main = new mainfr();
+            mainfr main = new mainfr(_logid);
             main.ShowDialog();
         }
     }

@@ -17,14 +17,15 @@ namespace Globe_Trotter_project
     {
         string ID;
         string password;
-        string email;
 
-        public loginclass(string _ID, string _password, string _email)
+
+        public loginclass(string _ID, string _password)
         {
             ID = _ID;
             password = _password;
-            email = _email;
         }
+
+       
 
     }
 }

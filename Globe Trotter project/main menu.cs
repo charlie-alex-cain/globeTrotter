@@ -12,23 +12,29 @@ namespace Globe_Trotter_project
 {
     public partial class mainfr : Form
     {
-        public mainfr()
+        string _logid;
+        public mainfr(string logid)
         {
             InitializeComponent();
+            _logid = logid;
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void logoutbt_Click(object sender, EventArgs e)
         {
             this.Hide();
-            welcomeFr welcome = new welcomeFr();
-            welcome.ShowDialog();
+            welcomeFr wel = new welcomeFr();
+            wel.ShowDialog();
         }
+
 
         private void coordsbt_Click(object sender, EventArgs e)
         {
             this.Hide();
-            coordsfr coords = new coordsfr();
+            coordsfr coords = new coordsfr(_logid);
             coords.ShowDialog();
+
+
         }
+
+       
     }
 }
