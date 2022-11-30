@@ -135,13 +135,29 @@ namespace Globe_Trotter_project
         }
         private void freqlocaldd_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void coordsfr_Load(object sender, EventArgs e)
         {
             freqlocalgb.Hide();
-            
+
+            string _sSqlString;
+            int numrecords;
+            List<List<string>> locationlist = new List<List<string>>();       
+            _sSqlString = "SELECT LocationName FROM Location ORDER BY LocationName ASC";
+            locationlist = ReadSqlss(_sSqlString);
+
+            numrecords = locationlist.Count;
+            System.Object[] locallist = new System.Object[numrecords];
+
+            for (int i = 0; i < numrecords; i++)
+            {
+                List<string> locallistp = locationlist[i];
+                locallist[i] = locallistp[0];
+
+            }
+            freqlocaldd.Items.AddRange(locallist);
         }
 
         private void backbt2_Click(object sender, EventArgs e)
@@ -149,6 +165,43 @@ namespace Globe_Trotter_project
             this.Hide();
             mainfr main = new mainfr(_logid);
             main.ShowDialog();
+        }
+        private const string EXAMPLEDB = "ExampleDatabase.mdb";
+        private const string CONNECTION_STRING = @"Provider=Microsoft Jet 4.0 OLE DB Provider;Data Source = " + EXAMPLEDB + ";";
+
+        public static List<List<string>> ReadSqlss(String sSqlString)
+        {
+            OleDbDataReader reader = null;
+            using (OleDbConnection connection = new OleDbConnection(CONNECTION_STRING))
+            {
+                using (OleDbCommand command = new OleDbCommand(sSqlString))
+                {
+                    command.Connection = connection;
+                    try
+                    {
+                        Console.WriteLine(sSqlString);
+                        connection.Open();
+                        reader = command.ExecuteReader();
+                        List<List<string>> Results = new List<List<string>>();
+                        while (reader.Read())
+                        {
+                            List<string> SQl = new List<string>();
+                            for (int i = 0; i < 1; i++)
+                            {
+                                SQl.Add(reader.GetValue(i).ToString());
+                            }
+                            Results.Add(SQl);
+                        }
+                        return Results;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        List<List<string>> Results = new List<List<string>>();
+                        return Results;
+                    }
+                }
+            }
         }
     }
 }

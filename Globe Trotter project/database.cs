@@ -118,9 +118,6 @@ namespace Globe_Trotter_project
                         {
                             return null;
                         }
-
-
-
                     }
                     catch (Exception ex)
                     {

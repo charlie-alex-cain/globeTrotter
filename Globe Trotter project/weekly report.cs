@@ -52,7 +52,7 @@ namespace Globe_Trotter_project
             date2 = lastdate.ToString().Substring(0, 10);
 
             _sSqlString = "SELECT JourneyID, DateofJourney, StartLocalID, EndLocalID, Distance, StartTime, EndTime " +
-                "FROM Journey WHERE  EmployeeID = " + _logid + " AND DateofJourney BETWEEN #" + date1 + "# AND #" + date2 + "# ORDER BY DateofJourney DESC";
+                "FROM Journey WHERE  EmployeeID = " + _logid + " AND DateofJourney BETWEEN #" + date1 + "# AND #" + date2 + "# ORDER BY JourneyID DESC";
             tabledata = ReadSqls(_sSqlString);
 
             for (int i = 0; i < tabledata.Count; i++)
@@ -107,8 +107,7 @@ namespace Globe_Trotter_project
                         {
                             List<string> SQl = new List<string>();
                             for (int i = 0; i < 7; i++)
-                            {
-                               
+                            {                              
                                 SQl.Add(reader.GetValue(i).ToString());
                             }
                             Results.Add(SQl);
@@ -124,7 +123,7 @@ namespace Globe_Trotter_project
                 }
             }
         }
-
+       
         private void label3_Click(object sender, EventArgs e)
         {
 
