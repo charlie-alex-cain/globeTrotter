@@ -41,15 +41,12 @@
             this.timehd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.distancelb = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.timelb = new System.Windows.Forms.Label();
-            this.unitstickbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.reporttbl)).BeginInit();
             this.SuspendLayout();
             // 
             // exitbt2
             // 
-            this.exitbt2.Location = new System.Drawing.Point(956, 14);
+            this.exitbt2.Location = new System.Drawing.Point(941, 14);
             this.exitbt2.Name = "exitbt2";
             this.exitbt2.Size = new System.Drawing.Size(122, 50);
             this.exitbt2.TabIndex = 0;
@@ -99,7 +96,7 @@
             this.reporttbl.Name = "reporttbl";
             this.reporttbl.RowHeadersWidth = 51;
             this.reporttbl.RowTemplate.Height = 24;
-            this.reporttbl.Size = new System.Drawing.Size(1083, 249);
+            this.reporttbl.Size = new System.Drawing.Size(1073, 405);
             this.reporttbl.TabIndex = 5;
             // 
             // JIDhd
@@ -147,7 +144,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(482, 31);
+            this.label3.Location = new System.Drawing.Point(619, 31);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 16);
             this.label3.TabIndex = 6;
@@ -157,48 +154,17 @@
             // distancelb
             // 
             this.distancelb.AutoSize = true;
-            this.distancelb.Location = new System.Drawing.Point(583, 31);
+            this.distancelb.Location = new System.Drawing.Point(720, 31);
             this.distancelb.Name = "distancelb";
             this.distancelb.Size = new System.Drawing.Size(58, 16);
             this.distancelb.TabIndex = 7;
             this.distancelb.Text = "distance";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(713, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Total time taken:";
-            // 
-            // timelb
-            // 
-            this.timelb.AutoSize = true;
-            this.timelb.Location = new System.Drawing.Point(824, 31);
-            this.timelb.Name = "timelb";
-            this.timelb.Size = new System.Drawing.Size(32, 16);
-            this.timelb.TabIndex = 9;
-            this.timelb.Text = "time";
-            // 
-            // unitstickbox
-            // 
-            this.unitstickbox.AutoSize = true;
-            this.unitstickbox.Location = new System.Drawing.Point(15, 54);
-            this.unitstickbox.Name = "unitstickbox";
-            this.unitstickbox.Size = new System.Drawing.Size(132, 20);
-            this.unitstickbox.TabIndex = 10;
-            this.unitstickbox.Text = "use imperial units";
-            this.unitstickbox.UseVisualStyleBackColor = true;
-            // 
             // weekreportfr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1105, 497);
-            this.Controls.Add(this.unitstickbox);
-            this.Controls.Add(this.timelb);
-            this.Controls.Add(this.label4);
+            this.ClientSize = new System.Drawing.Size(1092, 497);
             this.Controls.Add(this.distancelb);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.reporttbl);
@@ -230,8 +196,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn timehd;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label distancelb;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label timelb;
-        private System.Windows.Forms.CheckBox unitstickbox;
     }
 }

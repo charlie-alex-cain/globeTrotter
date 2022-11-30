@@ -34,22 +34,30 @@ namespace Globe_Trotter_project
         {
             
             string _sSqlString;
+            double totaldistance = 0;
             double unitdistance;
+            DateTime firstdate;
+            DateTime lastdate;
+            string date1;
+            string date2;
             TimeSpan dt;
             List<List<string>> tabledata = new List<List<string>>();
 
-
             userIDlb.Text = _logid;
 
+            _sSqlString = "SELECT DateofJourney FROM Journey ORDER BY DateofJourney DESC";
+            firstdate = Convert.ToDateTime(database.ReadSql(_sSqlString));
+            lastdate = firstdate.AddDays(-7);
+            date1 = firstdate.ToString().Substring(0, 10);
+            date2 = lastdate.ToString().Substring(0, 10);
 
             _sSqlString = "SELECT JourneyID, DateofJourney, StartLocalID, EndLocalID, Distance, StartTime, EndTime " +
-                "FROM Journey WHERE  EmployeeID =" + _logid + " ORDER BY DateofJourney DESC";
+                "FROM Journey WHERE  EmployeeID = " + _logid + " AND DateofJourney BETWEEN #" + date1 + "# AND #" + date2 + "# ORDER BY DateofJourney DESC";
             tabledata = ReadSqls(_sSqlString);
 
             for (int i = 0; i < tabledata.Count; i++)
             {
                 List<string> tablerecord = tabledata[i];
-
 
                 tablerecord[1] = tablerecord[1].Substring(0, 10);
 
@@ -62,6 +70,7 @@ namespace Globe_Trotter_project
                 unitdistance = Convert.ToDouble(tablerecord[4]) * 1.852;
                 unitdistance = Math.Round(unitdistance, 2);
                 tablerecord[4] = unitdistance.ToString();
+                totaldistance += Convert.ToDouble(tablerecord[4]);
                 tablerecord[4] = unitdistance + " km";
 
                 dt = Convert.ToDateTime(tablerecord[6]) - Convert.ToDateTime(tablerecord[5]);
@@ -69,6 +78,7 @@ namespace Globe_Trotter_project
 
                 reporttbl.Rows.Add(new object[] { tablerecord[0], tablerecord[1], tablerecord[2], tablerecord[3], tablerecord[4], tablerecord[5] });
             }
+            distancelb.Text = (totaldistance + " km").ToString();
 
         }
 
@@ -104,7 +114,7 @@ namespace Globe_Trotter_project
                             Results.Add(SQl);
                    
                         }
-                        return Results;                  
+                        return Results;
                     }
                     catch (Exception ex)
                     {
