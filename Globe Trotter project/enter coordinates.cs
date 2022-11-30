@@ -43,11 +43,8 @@ namespace Globe_Trotter_project
         
         private void submitbt3_Click(object sender, EventArgs e)
         {
-            int Locoords = Convert.ToInt32(long_coordstb.Text);
-            int Lacoords = Convert.ToInt32(lat_coordstb.Text);   
-            string name = locationnametb.Text;
-            string loID = "";
-            string joID = "";
+            int Locoords;
+            int Lacoords;
             int start_end;
             bool startcoords = startcoordstickbox.Checked;
             DateTime dt = DateTime.Now;
@@ -55,69 +52,132 @@ namespace Globe_Trotter_project
             string date = datetime.Substring(0, 10);
             string time = datetime.Substring(12, 7);
             string _sSqlString;
-            string _lSqlString;
-            string _2SqlString;
             double distance;
+            string joID = "";
             int Lacoordsstart;
             int Locoordsstart;
             string coordsID;
 
-
-            _sSqlString = "SELECT LocationID FROM Location ORDER BY LocationID DESC";
-            loID = database.createID(_sSqlString, loID);
-
-            _sSqlString = "INSERT INTO Location(LocationID, LocationName, Long_coords, Lat_coords) " +
-               " Values('" + loID + "', '" + name + "', " + Locoords + "," + Lacoords + ")";
-            database.ExecuteSql(_sSqlString);
-      
-            start_end = Convert.ToInt32(loID);
-
-            if (startcoords)
+            if (frequentlocaltickbox.Checked)
             {
-                _lSqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
-                joID = database.createID(_lSqlString, joID);
+                List<List<string>> locationdata = new List<List<string>>();
+                _sSqlString = "SELECT LocationID, Long_coords, Lat_coords FROM Location WHERE LocationName = '" + freqlocaldd.Text + "'";
+                locationdata = database.ReadSqls(_sSqlString, 3);
+                start_end = Convert.ToInt32(locationdata[0][0]);
+                Locoords = Convert.ToInt32(locationdata[0][1]);
+                Lacoords = Convert.ToInt32(locationdata[0][2]);
+
+                if (startcoords)
+                {
+                    _sSqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
+                    joID = database.createID(_sSqlString, joID);
+
+                }
+
+                if (startcoords == true)
+                {
+
+                    _sSqlString = "INSERT INTO Journey(JourneyID, EmployeeID, StartLocalID, DateofJourney, StartTime) " +
+                    " Values('" + joID + "','" + _logid + "', '" + start_end + "','" + date + "','" + time + "')";
+                    database.ExecuteSql(_sSqlString);
+
+                    startcoordstickbox.Checked = false;
+                }
+                if (startcoords == false)
+                {
+                    _sSqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
+                    joID = database.ReadSql(_sSqlString);
+                    // add default system
+
+                    _sSqlString = "SELECT StartLocalID FROM Journey WHERE JourneyID = " + joID;
+                    coordsID = database.ReadSql(_sSqlString);
+
+                    _sSqlString = "SELECT Lat_coords FROM Location WHERE LocationID = " + coordsID;
+                    Lacoordsstart = Convert.ToInt32(database.ReadSql(_sSqlString));
+
+                    _sSqlString = "SELECT Long_coords FROM Location WHERE LocationID = " + coordsID;
+                    Locoordsstart = Convert.ToInt32(database.ReadSql(_sSqlString));
+
+                    distance = calcdistance(Lacoordsstart, Locoordsstart, Lacoords, Locoords);
+
+                    _sSqlString = "UPDATE Journey SET EndLocalID = " + start_end + ", EndTime = '" + time + "', Distance = " + distance + " WHERE JourneyID = " + joID;
+                    database.ExecuteSql(_sSqlString);
+
+                    this.Hide();
+                    mainfr main = new mainfr(_logid);
+                    main.ShowDialog();
+                }
+
+                freqlocaldd.Text = "";
 
             }
-           
-
-            if (startcoords == true)
+            else
             {
-                
-                _sSqlString = "INSERT INTO Journey(JourneyID, EmployeeID, StartLocalID, DateofJourney, StartTime) " +
-                " Values('" + joID + "','" + _logid + "', '" + start_end + "','" + date + "','" + time + "')";
+                Locoords = Convert.ToInt32(long_coordstb.Text);
+                Lacoords = Convert.ToInt32(lat_coordstb.Text);
+                string name = locationnametb.Text;
+                string loID = "";              
+                string _lSqlString;
+                string _2SqlString;
+ 
+
+
+                _sSqlString = "SELECT LocationID FROM Location ORDER BY LocationID DESC";
+                loID = database.createID(_sSqlString, loID);
+
+                _sSqlString = "INSERT INTO Location(LocationID, LocationName, Long_coords, Lat_coords) " +
+                   " Values('" + loID + "', '" + name + "', " + Locoords + "," + Lacoords + ")";
                 database.ExecuteSql(_sSqlString);
 
-                startcoordstickbox.Checked = false;
+                start_end = Convert.ToInt32(loID);
+
+                if (startcoords)
+                {
+                    _lSqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
+                    joID = database.createID(_lSqlString, joID);
+
+                }
+
+
+                if (startcoords == true)
+                {
+
+                    _sSqlString = "INSERT INTO Journey(JourneyID, EmployeeID, StartLocalID, DateofJourney, StartTime) " +
+                    " Values('" + joID + "','" + _logid + "', '" + start_end + "','" + date + "','" + time + "')";
+                    database.ExecuteSql(_sSqlString);
+
+                    startcoordstickbox.Checked = false;
+                }
+
+                if (startcoords == false)
+                {
+                    _2SqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
+                    joID = database.ReadSql(_2SqlString);
+                    // add default system
+
+                    _2SqlString = "SELECT StartLocalID FROM Journey WHERE JourneyID = " + joID;
+                    coordsID = database.ReadSql(_2SqlString);
+
+                    _2SqlString = "SELECT Lat_coords FROM Location WHERE LocationID = " + coordsID;
+                    Lacoordsstart = Convert.ToInt32(database.ReadSql(_2SqlString));
+
+                    _2SqlString = "SELECT Long_coords FROM Location WHERE LocationID = " + coordsID;
+                    Locoordsstart = Convert.ToInt32(database.ReadSql(_2SqlString));
+
+                    distance = calcdistance(Lacoordsstart, Locoordsstart, Lacoords, Locoords);
+
+                    _sSqlString = "UPDATE Journey SET EndLocalID = " + start_end + ", EndTime = '" + time + "', Distance = " + distance + " WHERE JourneyID = " + joID;
+                    database.ExecuteSql(_sSqlString);
+
+                    this.Hide();
+                    mainfr main = new mainfr(_logid);
+                    main.ShowDialog();
+                }
+
+                lat_coordstb.Clear();
+                long_coordstb.Clear();
+                locationnametb.Clear();
             }
-
-            if (startcoords == false)
-            {
-                _2SqlString ="SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
-                joID = database.ReadSql(_2SqlString);
-                // add default system
-
-                _2SqlString = "SELECT StartLocalID FROM Journey WHERE JourneyID = " + joID;
-                coordsID = database.ReadSql(_2SqlString);
-
-                _2SqlString = "SELECT Lat_coords FROM Location WHERE LocationID = " + coordsID;
-                Lacoordsstart = Convert.ToInt32(database.ReadSql(_2SqlString));
-
-                _2SqlString = "SELECT Long_coords FROM Location WHERE LocationID = " + coordsID;
-                Locoordsstart = Convert.ToInt32(database.ReadSql(_2SqlString));
-
-                distance = calcdistance(Lacoordsstart, Locoordsstart, Lacoords, Locoords);
-
-                _sSqlString = "UPDATE Journey SET EndLocalID = " + start_end + ", EndTime = '" + time + "', Distance = " + distance + " WHERE JourneyID = " + joID;
-                database.ExecuteSql(_sSqlString);
-
-                this.Hide();
-                mainfr main = new mainfr(_logid);
-                main.ShowDialog();
-            }
-            
-            lat_coordstb.Clear();
-            long_coordstb.Clear();
-            locationnametb.Clear();
         }
 
         public double calcdistance(int lat1, int lon1, int lat2, int lon2)
@@ -146,7 +206,7 @@ namespace Globe_Trotter_project
             int numrecords;
             List<List<string>> locationlist = new List<List<string>>();       
             _sSqlString = "SELECT LocationName FROM Location ORDER BY LocationName ASC";
-            locationlist = ReadSqlss(_sSqlString);
+            locationlist = database.ReadSqls(_sSqlString, 1);
 
             numrecords = locationlist.Count;
             System.Object[] locallist = new System.Object[numrecords];
@@ -159,49 +219,11 @@ namespace Globe_Trotter_project
             }
             freqlocaldd.Items.AddRange(locallist);
         }
-
         private void backbt2_Click(object sender, EventArgs e)
         {
             this.Hide();
             mainfr main = new mainfr(_logid);
             main.ShowDialog();
-        }
-        private const string EXAMPLEDB = "ExampleDatabase.mdb";
-        private const string CONNECTION_STRING = @"Provider=Microsoft Jet 4.0 OLE DB Provider;Data Source = " + EXAMPLEDB + ";";
-
-        public static List<List<string>> ReadSqlss(String sSqlString)
-        {
-            OleDbDataReader reader = null;
-            using (OleDbConnection connection = new OleDbConnection(CONNECTION_STRING))
-            {
-                using (OleDbCommand command = new OleDbCommand(sSqlString))
-                {
-                    command.Connection = connection;
-                    try
-                    {
-                        Console.WriteLine(sSqlString);
-                        connection.Open();
-                        reader = command.ExecuteReader();
-                        List<List<string>> Results = new List<List<string>>();
-                        while (reader.Read())
-                        {
-                            List<string> SQl = new List<string>();
-                            for (int i = 0; i < 1; i++)
-                            {
-                                SQl.Add(reader.GetValue(i).ToString());
-                            }
-                            Results.Add(SQl);
-                        }
-                        return Results;
-
-                    }
-                    catch (Exception ex)
-                    {
-                        List<List<string>> Results = new List<List<string>>();
-                        return Results;
-                    }
-                }
-            }
         }
     }
 }

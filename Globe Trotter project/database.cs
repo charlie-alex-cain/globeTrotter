@@ -126,6 +126,40 @@ namespace Globe_Trotter_project
                 }
             }
         }
+
+        public static List<List<string>> ReadSqls(String sSqlString, int num)
+        {
+            OleDbDataReader reader = null;
+            using (OleDbConnection connection = new OleDbConnection(CONNECTION_STRING))
+            {
+                using (OleDbCommand command = new OleDbCommand(sSqlString))
+                {
+                    command.Connection = connection;
+                    try
+                    {
+                        Console.WriteLine(sSqlString);
+                        connection.Open();
+                        reader = command.ExecuteReader();
+                        List<List<string>> Results = new List<List<string>>();
+                        while (reader.Read())
+                        {
+                            List<string> SQl = new List<string>();
+                            for (int i = 0; i < num; i++)
+                            {
+                                SQl.Add(reader.GetValue(i).ToString());
+                            }
+                            Results.Add(SQl);
+                        }
+                        return Results;
+                    }
+                    catch (Exception ex)
+                    {
+                        List<List<string>> Results = new List<List<string>>();
+                        return Results;
+                    }
+                }
+            }
+        }
         public static string createID(string _sSqlString, string ID)
         {
             int nextid;
