@@ -53,6 +53,12 @@
     <Compile Include="enter coordinates.Designer.cs">
       <DependentUpon>enter coordinates.cs</DependentUpon>
     </Compile>
+    <Compile Include="weekly report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="weekly report.Designer.cs">
+      <DependentUpon>weekly report.cs</DependentUpon>
+    </Compile>
     <Compile Include="main menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="newEmployee.resx">
       <DependentUpon>newEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="weekly report.resx">
+      <DependentUpon>weekly report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="welcome menu.resx">
       <DependentUpon>welcome menu.cs</DependentUpon>

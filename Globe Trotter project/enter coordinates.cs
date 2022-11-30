@@ -78,7 +78,7 @@ namespace Globe_Trotter_project
                 joID = database.createID(_lSqlString, joID);
 
             }
-            Console.WriteLine("45"+Program.loginempID);
+           
 
             if (startcoords == true)
             {

@@ -83,5 +83,10 @@ namespace Globe_Trotter_project
         {
 
         }
+
+        private void loginFr_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -52,6 +52,7 @@
             this.reportbt.TabIndex = 1;
             this.reportbt.Text = "Weekly Report";
             this.reportbt.UseVisualStyleBackColor = true;
+            this.reportbt.Click += new System.EventHandler(this.reportbt_Click);
             // 
             // logoutbt
             // 

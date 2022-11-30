@@ -35,6 +35,11 @@ namespace Globe_Trotter_project
 
         }
 
-       
+        private void reportbt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            weekreportfr report = new weekreportfr(_logid);
+            report.ShowDialog();
+        }
     }
 }
