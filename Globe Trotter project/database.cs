@@ -40,12 +40,12 @@ namespace Globe_Trotter_project
             for (int j = 0; j < readfirst.Length; j++)
             {
                 string line = readfirst[j];
-                string[] readfirstp = line.Split(' ');
+                string[] read = line.Split(' ');
                 string _sSqlString;
-                string LocationID = readfirstp[0];
-                string LocationName = readfirstp[1];
-                double Long_coords = Convert.ToDouble(readfirstp[2]);
-                double Lat_coords = Convert.ToDouble(readfirstp[3]);
+                string LocationID = read[0];
+                string LocationName = read[1];
+                double Long_coords = Convert.ToDouble(read[2]);
+                double Lat_coords = Convert.ToDouble(read[3]);
 
                 _sSqlString = "INSERT INTO Location(LocationID, LocationName, Long_coords, Lat_coords) " +
                        " Values('" + LocationID + "','" + LocationName + "', '" + Long_coords + "','" + Lat_coords + "')";
@@ -183,7 +183,9 @@ namespace Globe_Trotter_project
                     catch (Exception ex)
                     {
                         List<List<string>> Results = new List<List<string>>();
+                        Console.WriteLine("error2");
                         return Results;
+
                     }
                 }
             }

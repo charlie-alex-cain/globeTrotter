@@ -42,8 +42,9 @@ namespace Globe_Trotter_project
             userIDlb.Text = _logid;
 
  
-            _sSqlString = "SELECT JourneyID, DateofJourney, StartLocalID, EndLocalID, Distance, StartTime, EndTime " +
-                "FROM Journey WHERE  EmployeeID = " + _logid + " AND DateofJourney BETWEEN Date() AND Date()-7 ORDER BY JourneyID DESC";
+            _sSqlString = "SELECT JourneyID, DateofJourney, S.LocationName, E.LocationName, Distance, StartTime, EndTime " +
+                "FROM Journey, Location S, Location E WHERE StartLocalID = S.LocationID AND EndLocalID = E.LocationID AND EmployeeID = " + _logid + " AND " +
+                "DateofJourney BETWEEN Date() AND Date()-7 ORDER BY JourneyID DESC";
 
             tabledata = database.ReadSqls(_sSqlString);
 
@@ -52,12 +53,6 @@ namespace Globe_Trotter_project
                 List<string> tablerecord = tabledata[i];
 
                 tablerecord[1] = tablerecord[1].Substring(0, 10);
-
-                _sSqlString = "SELECT LocationName FROM Location WHERE LocationID = " + tablerecord[2];
-                tablerecord[2] = database.ReadSql(_sSqlString);
-
-                _sSqlString = "SELECT LocationName FROM Location WHERE LocationID = " + tablerecord[3];
-                tablerecord[3] = database.ReadSql(_sSqlString);
 
                 unitdistance = Convert.ToDouble(tablerecord[4]) * 1.852;
                 unitdistance = Math.Round(unitdistance, 2);
@@ -78,10 +73,6 @@ namespace Globe_Trotter_project
         {
 
         }
-
-       
-       
-       
         private void label3_Click(object sender, EventArgs e)
         {
 

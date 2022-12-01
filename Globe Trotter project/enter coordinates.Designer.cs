@@ -38,13 +38,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.submitbt3 = new System.Windows.Forms.Button();
             this.coordsgb = new System.Windows.Forms.GroupBox();
+            this.addfreqtickbox = new System.Windows.Forms.CheckBox();
             this.freqlocalgb = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.freqlocaldd = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.startcoordstickbox = new System.Windows.Forms.CheckBox();
             this.backbt2 = new System.Windows.Forms.Button();
-            this.addfreqtickbox = new System.Windows.Forms.CheckBox();
             this.coordsgb.SuspendLayout();
             this.freqlocalgb.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +67,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 18);
+            this.label1.Location = new System.Drawing.Point(8, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 16);
             this.label1.TabIndex = 2;
@@ -143,6 +143,16 @@
             this.coordsgb.TabIndex = 9;
             this.coordsgb.TabStop = false;
             // 
+            // addfreqtickbox
+            // 
+            this.addfreqtickbox.AutoSize = true;
+            this.addfreqtickbox.Location = new System.Drawing.Point(9, 153);
+            this.addfreqtickbox.Name = "addfreqtickbox";
+            this.addfreqtickbox.Size = new System.Drawing.Size(175, 20);
+            this.addfreqtickbox.TabIndex = 15;
+            this.addfreqtickbox.Text = "add to frequent locations";
+            this.addfreqtickbox.UseVisualStyleBackColor = true;
+            // 
             // freqlocalgb
             // 
             this.freqlocalgb.Controls.Add(this.label5);
@@ -176,7 +186,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(273, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(271, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -200,21 +210,11 @@
             this.backbt2.UseVisualStyleBackColor = true;
             this.backbt2.Click += new System.EventHandler(this.backbt2_Click);
             // 
-            // addfreqtickbox
-            // 
-            this.addfreqtickbox.AutoSize = true;
-            this.addfreqtickbox.Location = new System.Drawing.Point(9, 153);
-            this.addfreqtickbox.Name = "addfreqtickbox";
-            this.addfreqtickbox.Size = new System.Drawing.Size(219, 25);
-            this.addfreqtickbox.TabIndex = 15;
-            this.addfreqtickbox.Text = "add to frequent locations";
-            this.addfreqtickbox.UseVisualStyleBackColor = true;
-            // 
             // coordsfr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 370);
+            this.ClientSize = new System.Drawing.Size(271, 370);
             this.Controls.Add(this.backbt2);
             this.Controls.Add(this.startcoordstickbox);
             this.Controls.Add(this.freqlocalgb);
