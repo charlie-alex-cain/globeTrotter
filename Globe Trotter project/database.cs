@@ -155,7 +155,7 @@ namespace Globe_Trotter_project
             }
         }
 
-        public static List<List<string>> ReadSqls(String sSqlString, int num)
+        public static List<List<string>> ReadSqls(String sSqlString)
         {
             OleDbDataReader reader = null;
             using (OleDbConnection connection = new OleDbConnection(CONNECTION_STRING))
@@ -172,7 +172,7 @@ namespace Globe_Trotter_project
                         while (reader.Read())
                         {
                             List<string> SQl = new List<string>();
-                            for (int i = 0; i < num; i++)
+                            for (int i = 0; i < reader.FieldCount; i++)
                             {
                                 SQl.Add(reader.GetValue(i).ToString());
                             }

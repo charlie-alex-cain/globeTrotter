@@ -36,24 +36,16 @@ namespace Globe_Trotter_project
             string _sSqlString;
             double totaldistance = 0;
             double unitdistance;
-            DateTime firstdate;
-            DateTime lastdate;
-            string date1;
-            string date2;
             TimeSpan dt;
             List<List<string>> tabledata = new List<List<string>>();
 
             userIDlb.Text = _logid;
 
-            _sSqlString = "SELECT DateofJourney FROM Journey ORDER BY DateofJourney DESC";
-            firstdate = Convert.ToDateTime(database.ReadSql(_sSqlString));
-            lastdate = firstdate.AddDays(-7);
-            date1 = firstdate.ToString().Substring(0, 10);
-            date2 = lastdate.ToString().Substring(0, 10);
-
+ 
             _sSqlString = "SELECT JourneyID, DateofJourney, StartLocalID, EndLocalID, Distance, StartTime, EndTime " +
-                "FROM Journey WHERE  EmployeeID = " + _logid + " AND DateofJourney BETWEEN #" + date1 + "# AND #" + date2 + "# ORDER BY JourneyID DESC";
-            tabledata = database.ReadSqls(_sSqlString, 7);
+                "FROM Journey WHERE  EmployeeID = " + _logid + " AND DateofJourney BETWEEN Date() AND Date()-7 ORDER BY JourneyID DESC";
+
+            tabledata = database.ReadSqls(_sSqlString);
 
             for (int i = 0; i < tabledata.Count; i++)
             {

@@ -62,7 +62,7 @@ namespace Globe_Trotter_project
             {
                 List<List<string>> locationdata = new List<List<string>>();
                 _sSqlString = "SELECT LocationID, Long_coords, Lat_coords FROM Location WHERE LocationName = '" + freqlocaldd.Text + "'";
-                locationdata = database.ReadSqls(_sSqlString, 3);
+                locationdata = database.ReadSqls(_sSqlString);
                 start_end = Convert.ToInt32(locationdata[0][0]);
                 Locoords = Convert.ToDouble(locationdata[0][1]);
                 Lacoords = Convert.ToDouble(locationdata[0][2]);
@@ -131,6 +131,7 @@ namespace Globe_Trotter_project
                 if (addfreqtickbox.Checked)
                 {
                     database.addtoFrequentLocations(loID, name, Locoords, Lacoords);
+                    addfreqtickbox.Checked = false;
                 }
 
                 start_end = Convert.ToInt32(loID);
@@ -210,7 +211,7 @@ namespace Globe_Trotter_project
             int numrecords;
             List<List<string>> locationlist = new List<List<string>>();       
             _sSqlString = "SELECT LocationName FROM Location ORDER BY LocationName ASC";
-            locationlist = database.ReadSqls(_sSqlString, 1);
+            locationlist = database.ReadSqls(_sSqlString);
 
             numrecords = locationlist.Count;
             System.Object[] locallist = new System.Object[numrecords];
