@@ -40,8 +40,8 @@ namespace Globe_Trotter_project
             for (int j = 0; j < readfirst.Length; j++)
             {
                 string line = readfirst[j];
-                string[] readfirstp = line.Split(' ');           
-                string _sSqlString;             
+                string[] readfirstp = line.Split(' ');
+                string _sSqlString;
                 string LocationID = readfirstp[0];
                 string LocationName = readfirstp[1];
                 double Long_coords = Convert.ToDouble(readfirstp[2]);
@@ -52,6 +52,14 @@ namespace Globe_Trotter_project
                 ExecuteSql(_sSqlString);
             }
         }
+        public static void addtoFrequentLocations(string loID, string name, double Locoords, double Lacoords)
+        {
+            string file = "frequent locations.txt";
+            string edit = loID + " " + name + " " + Locoords + " " + Lacoords;
+            StreamWriter SR = new StreamWriter(file, true);
+            SR.WriteLine(edit);
+            SR.Close();
+        }
         private static void createdatabase()
         {
             string _sSqlString;
@@ -59,8 +67,8 @@ namespace Globe_Trotter_project
             _sSqlString = "CREATE TABLE Location("
                                                 + "LocationID SHORT NOT NULL,"
                                                 + "LocationName VARCHAR(30),"
-                                                + "Long_coords INT,"
-                                                + "Lat_coords INT,"
+                                                + "Long_coords DOUBLE,"
+                                                + "Lat_coords DOUBLE,"
                                                 + "PRIMARY KEY (LocationID)"
                                                 + ")";
             ExecuteSql(_sSqlString);

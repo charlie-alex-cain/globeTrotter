@@ -44,6 +44,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.startcoordstickbox = new System.Windows.Forms.CheckBox();
             this.backbt2 = new System.Windows.Forms.Button();
+            this.addfreqtickbox = new System.Windows.Forms.CheckBox();
             this.coordsgb.SuspendLayout();
             this.freqlocalgb.SuspendLayout();
             this.SuspendLayout();
@@ -119,7 +120,7 @@
             // 
             // submitbt3
             // 
-            this.submitbt3.Location = new System.Drawing.Point(13, 281);
+            this.submitbt3.Location = new System.Drawing.Point(12, 314);
             this.submitbt3.Name = "submitbt3";
             this.submitbt3.Size = new System.Drawing.Size(118, 48);
             this.submitbt3.TabIndex = 8;
@@ -129,6 +130,7 @@
             // 
             // coordsgb
             // 
+            this.coordsgb.Controls.Add(this.addfreqtickbox);
             this.coordsgb.Controls.Add(this.label1);
             this.coordsgb.Controls.Add(this.long_coordstb);
             this.coordsgb.Controls.Add(this.label2);
@@ -137,7 +139,7 @@
             this.coordsgb.Controls.Add(this.label3);
             this.coordsgb.Location = new System.Drawing.Point(37, 103);
             this.coordsgb.Name = "coordsgb";
-            this.coordsgb.Size = new System.Drawing.Size(219, 167);
+            this.coordsgb.Size = new System.Drawing.Size(219, 189);
             this.coordsgb.TabIndex = 9;
             this.coordsgb.TabStop = false;
             // 
@@ -145,7 +147,7 @@
             // 
             this.freqlocalgb.Controls.Add(this.label5);
             this.freqlocalgb.Controls.Add(this.freqlocaldd);
-            this.freqlocalgb.Location = new System.Drawing.Point(13, 140);
+            this.freqlocalgb.Location = new System.Drawing.Point(0, 150);
             this.freqlocalgb.Name = "freqlocalgb";
             this.freqlocalgb.Size = new System.Drawing.Size(196, 100);
             this.freqlocalgb.TabIndex = 11;
@@ -174,7 +176,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(281, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(273, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -190,7 +192,7 @@
             // 
             // backbt2
             // 
-            this.backbt2.Location = new System.Drawing.Point(151, 281);
+            this.backbt2.Location = new System.Drawing.Point(138, 314);
             this.backbt2.Name = "backbt2";
             this.backbt2.Size = new System.Drawing.Size(118, 48);
             this.backbt2.TabIndex = 14;
@@ -198,11 +200,21 @@
             this.backbt2.UseVisualStyleBackColor = true;
             this.backbt2.Click += new System.EventHandler(this.backbt2_Click);
             // 
+            // addfreqtickbox
+            // 
+            this.addfreqtickbox.AutoSize = true;
+            this.addfreqtickbox.Location = new System.Drawing.Point(9, 153);
+            this.addfreqtickbox.Name = "addfreqtickbox";
+            this.addfreqtickbox.Size = new System.Drawing.Size(219, 25);
+            this.addfreqtickbox.TabIndex = 15;
+            this.addfreqtickbox.Text = "add to frequent locations";
+            this.addfreqtickbox.UseVisualStyleBackColor = true;
+            // 
             // coordsfr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 341);
+            this.ClientSize = new System.Drawing.Size(273, 370);
             this.Controls.Add(this.backbt2);
             this.Controls.Add(this.startcoordstickbox);
             this.Controls.Add(this.freqlocalgb);
@@ -242,5 +254,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.CheckBox startcoordstickbox;
         private System.Windows.Forms.Button backbt2;
+        private System.Windows.Forms.CheckBox addfreqtickbox;
     }
 }

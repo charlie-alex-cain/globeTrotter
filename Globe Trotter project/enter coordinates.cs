@@ -43,8 +43,8 @@ namespace Globe_Trotter_project
         
         private void submitbt3_Click(object sender, EventArgs e)
         {
-            int Locoords;
-            int Lacoords;
+            double Locoords;
+            double Lacoords;
             int start_end;
             bool startcoords = startcoordstickbox.Checked;
             DateTime dt = DateTime.Now;
@@ -54,8 +54,8 @@ namespace Globe_Trotter_project
             string _sSqlString;
             double distance;
             string joID = "";
-            int Lacoordsstart;
-            int Locoordsstart;
+            double Lacoordsstart;
+            double Locoordsstart;
             string coordsID;
 
             if (frequentlocaltickbox.Checked)
@@ -64,8 +64,8 @@ namespace Globe_Trotter_project
                 _sSqlString = "SELECT LocationID, Long_coords, Lat_coords FROM Location WHERE LocationName = '" + freqlocaldd.Text + "'";
                 locationdata = database.ReadSqls(_sSqlString, 3);
                 start_end = Convert.ToInt32(locationdata[0][0]);
-                Locoords = Convert.ToInt32(locationdata[0][1]);
-                Lacoords = Convert.ToInt32(locationdata[0][2]);
+                Locoords = Convert.ToDouble(locationdata[0][1]);
+                Lacoords = Convert.ToDouble(locationdata[0][2]);
 
                 if (startcoords)
                 {
@@ -93,10 +93,10 @@ namespace Globe_Trotter_project
                     coordsID = database.ReadSql(_sSqlString);
 
                     _sSqlString = "SELECT Lat_coords FROM Location WHERE LocationID = " + coordsID;
-                    Lacoordsstart = Convert.ToInt32(database.ReadSql(_sSqlString));
+                    Lacoordsstart = Convert.ToDouble(database.ReadSql(_sSqlString));
 
                     _sSqlString = "SELECT Long_coords FROM Location WHERE LocationID = " + coordsID;
-                    Locoordsstart = Convert.ToInt32(database.ReadSql(_sSqlString));
+                    Locoordsstart = Convert.ToDouble(database.ReadSql(_sSqlString));
 
                     distance = calcdistance(Lacoordsstart, Locoordsstart, Lacoords, Locoords);
 
@@ -113,8 +113,8 @@ namespace Globe_Trotter_project
             }
             else
             {
-                Locoords = Convert.ToInt32(long_coordstb.Text);
-                Lacoords = Convert.ToInt32(lat_coordstb.Text);
+                Locoords = Convert.ToDouble(long_coordstb.Text);
+                Lacoords = Convert.ToDouble(lat_coordstb.Text);
                 string name = locationnametb.Text;
                 string loID = "";              
                 string _lSqlString;
@@ -128,6 +128,10 @@ namespace Globe_Trotter_project
                 _sSqlString = "INSERT INTO Location(LocationID, LocationName, Long_coords, Lat_coords) " +
                    " Values('" + loID + "', '" + name + "', " + Locoords + "," + Lacoords + ")";
                 database.ExecuteSql(_sSqlString);
+                if (addfreqtickbox.Checked)
+                {
+                    database.addtoFrequentLocations(loID, name, Locoords, Lacoords);
+                }
 
                 start_end = Convert.ToInt32(loID);
 
@@ -159,10 +163,10 @@ namespace Globe_Trotter_project
                     coordsID = database.ReadSql(_2SqlString);
 
                     _2SqlString = "SELECT Lat_coords FROM Location WHERE LocationID = " + coordsID;
-                    Lacoordsstart = Convert.ToInt32(database.ReadSql(_2SqlString));
+                    Lacoordsstart = Convert.ToDouble(database.ReadSql(_2SqlString));
 
                     _2SqlString = "SELECT Long_coords FROM Location WHERE LocationID = " + coordsID;
-                    Locoordsstart = Convert.ToInt32(database.ReadSql(_2SqlString));
+                    Locoordsstart = Convert.ToDouble(database.ReadSql(_2SqlString));
 
                     distance = calcdistance(Lacoordsstart, Locoordsstart, Lacoords, Locoords);
 
@@ -180,7 +184,7 @@ namespace Globe_Trotter_project
             }
         }
 
-        public double calcdistance(int lat1, int lon1, int lat2, int lon2)
+        public double calcdistance(double lat1, double lon1, double lat2, double lon2)
         {
             const double earthcircumfrence = 3440.1;
             double lat1R = lat1 * (Math.PI / 180);
