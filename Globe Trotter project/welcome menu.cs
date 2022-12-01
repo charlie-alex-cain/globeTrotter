@@ -36,16 +36,7 @@ namespace Globe_Trotter_project
         {
             database.CheckDatabase();
         }
-       
-
-       
-
-
-       
-
-
-       
-
+   
         private void newemployeebt_Click(object sender, EventArgs e)
         {
             this.Hide();
