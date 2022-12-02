@@ -50,6 +50,10 @@ namespace Globe_Trotter_project
             for (int i = 0; i < tabledata.Count; i++)
             {
                 List<string> tablerecord = tabledata[i];
+                if (tablerecord[4] == null)
+                {
+                    continue;
+                }
 
                 tablerecord[1] = tablerecord[1].Substring(0, 10);
 

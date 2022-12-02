@@ -85,7 +85,8 @@ namespace Globe_Trotter_project
                 if (startcoords == false)
                 {
                     List<List<string>> StartLocationData = new List<List<string>>();
-                    _sSqlString = "SELECT JourneyID, Long_coords, Lat_coords FROM Journey, Location WHERE StartLocalID = LocationID ORDER BY JourneyID DESC";
+                    _sSqlString = "SELECT JourneyID, Long_coords, Lat_coords FROM Journey, Location " +
+                        "WHERE EmployeeID = " + _logid + " AND StartLocalID = LocationID ORDER BY JourneyID DESC";
                     StartLocationData = database.ReadSqls(_sSqlString);
                     joID = StartLocationData[0][0];
                     Locoordsstart = Convert.ToDouble(StartLocationData[0][1]);
@@ -93,7 +94,8 @@ namespace Globe_Trotter_project
 
                     distance = calcdistance(Lacoordsstart, Locoordsstart, Lacoords, Locoords);
 
-                    _sSqlString = "UPDATE Journey SET EndLocalID = " + start_end + ", EndTime = '" + time + "', Distance = " + distance + " WHERE JourneyID = " + joID;
+                    _sSqlString = "UPDATE Journey SET EndLocalID = " + start_end + ", EndTime = '" + time + "', Distance = " + distance + " " +
+                        "WHERE JourneyID = " + joID + " AND EmployeeID = " + _logid;
                     database.ExecuteSql(_sSqlString);
 
                     this.Hide();
@@ -147,7 +149,8 @@ namespace Globe_Trotter_project
                 if (startcoords == false)
                 {
                     List<List<string>> StartLocationData = new List<List<string>>();
-                    _sSqlString = "SELECT JourneyID, Long_coords, Lat_coords FROM Journey, Location WHERE StartLocalID = LocationID ORDER BY JourneyID DESC";
+                    _sSqlString = "SELECT JourneyID, Long_coords, Lat_coords FROM Journey, Location " +
+                        "WHERE EmployeeID = " + _logid + " AND StartLocalID = LocationID ORDER BY JourneyID DESC";
                     StartLocationData = database.ReadSqls(_sSqlString);
                     joID = StartLocationData[0][0];
                     Locoordsstart = Convert.ToDouble(StartLocationData[0][1]);
@@ -155,7 +158,8 @@ namespace Globe_Trotter_project
 
                     distance = calcdistance(Lacoordsstart, Locoordsstart, Lacoords, Locoords);
 
-                    _sSqlString = "UPDATE Journey SET EndLocalID = " + start_end + ", EndTime = '" + time + "', Distance = " + distance + " WHERE JourneyID = " + joID;
+                    _sSqlString = "UPDATE Journey SET EndLocalID = " + start_end + ", EndTime = '" + time + "', Distance = " + distance + " " +
+                        "WHERE JourneyID = " + joID + "AND EmployeeID = " + _logid;
                     database.ExecuteSql(_sSqlString);
 
                     this.Hide();
