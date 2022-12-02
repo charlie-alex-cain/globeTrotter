@@ -25,14 +25,11 @@ namespace Globe_Trotter_project
             wel.ShowDialog();
         }
 
-
         private void coordsbt_Click(object sender, EventArgs e)
         {
             this.Hide();
             coordsfr coords = new coordsfr(_logid);
             coords.ShowDialog();
-
-
         }
 
         private void reportbt_Click(object sender, EventArgs e)

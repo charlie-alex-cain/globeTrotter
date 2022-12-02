@@ -77,7 +77,6 @@
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Globe Trotter";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -89,7 +88,6 @@
             this.label2.Size = new System.Drawing.Size(159, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "Please enter the following";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label5
             // 
@@ -118,7 +116,6 @@
             this.surnametb.Name = "surnametb";
             this.surnametb.Size = new System.Drawing.Size(110, 20);
             this.surnametb.TabIndex = 11;
-            this.surnametb.TextChanged += new System.EventHandler(this.surnametb_TextChanged);
             // 
             // label7
             // 
@@ -171,7 +168,6 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "newEmployeeFr";
             this.Text = "newEmployee";
-            this.Load += new System.EventHandler(this.newEmployeeFr_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

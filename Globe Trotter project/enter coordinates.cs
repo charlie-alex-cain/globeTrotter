@@ -19,12 +19,7 @@ namespace Globe_Trotter_project
             InitializeComponent();
             _logid = logid;
         }
-        
-        private void long_coordstb_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-        
         private void frequentlocaltickbox_CheckedChanged(object sender, EventArgs e)
         {
             bool tick = frequentlocaltickbox.Checked;
@@ -186,11 +181,7 @@ namespace Globe_Trotter_project
             distance = Math.Round(distance, 2);
             return distance;
         }
-        private void freqlocaldd_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
+  
         private void coordsfr_Load(object sender, EventArgs e)
         {
             freqlocalgb.Hide();

@@ -19,6 +19,14 @@ namespace Globe_Trotter_project
         {
             InitializeComponent();
         }
+        private void welcomeFr_Load(object sender, EventArgs e)
+        {
+            database.CheckDatabase();
+        }
+        private void exitbt_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 
         private void loginbt_Click(object sender, EventArgs e)
         {
@@ -27,16 +35,6 @@ namespace Globe_Trotter_project
             login.ShowDialog();
         }
 
-        private void exitbt_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void welcomeFr_Load(object sender, EventArgs e)
-        {
-            database.CheckDatabase();
-        }
-   
         private void newemployeebt_Click(object sender, EventArgs e)
         {
             this.Hide();

@@ -25,11 +25,8 @@ namespace Globe_Trotter_project
             int pass;
             int checkpass;
             string f;
-
             string _sSqlString;
-            
-            
-
+         
             _sSqlString = "SELECT EmpPassword FROM Employee WHERE EmployeeID = " + logid;
 
             f = database.ReadSql(_sSqlString);
@@ -52,29 +49,13 @@ namespace Globe_Trotter_project
                 passwordtb.Clear();
                 loginIDtb.Clear();
             }
-            
-
-
-
-
         }
       
-
         private void backbt1_Click(object sender, EventArgs e)
         {
             this.Hide();
             welcomeFr wel = new welcomeFr();
             wel.ShowDialog();
-        }
-
-        private void loginIDtb_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void loginFr_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

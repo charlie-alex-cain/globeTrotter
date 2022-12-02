@@ -56,7 +56,6 @@
             this.long_coordstb.Name = "long_coordstb";
             this.long_coordstb.Size = new System.Drawing.Size(156, 20);
             this.long_coordstb.TabIndex = 0;
-            this.long_coordstb.TextChanged += new System.EventHandler(this.long_coordstb_TextChanged);
             // 
             // lat_coordstb
             // 
@@ -195,7 +194,6 @@
             this.freqlocaldd.Name = "freqlocaldd";
             this.freqlocaldd.Size = new System.Drawing.Size(92, 21);
             this.freqlocaldd.TabIndex = 10;
-            this.freqlocaldd.SelectedIndexChanged += new System.EventHandler(this.freqlocaldd_SelectedIndexChanged);
             // 
             // menuStrip1
             // 

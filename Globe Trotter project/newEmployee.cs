@@ -21,16 +21,6 @@ namespace Globe_Trotter_project
             InitializeComponent();
         }
 
-        private void emailtb_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void submitbt2_Click(object sender, EventArgs e)
         {
             string checkid = "";
@@ -63,23 +53,6 @@ namespace Globe_Trotter_project
                 newpasstb.Clear();
                 newRpasstb.Clear();
             }
-
-           
-
-        }
-
-        private void newEmployeeFr_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        
-       
-        
-
-        private void surnametb_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void backbt4_Click(object sender, EventArgs e)
@@ -87,11 +60,6 @@ namespace Globe_Trotter_project
             this.Hide();
             welcomeFr wel = new welcomeFr();
             wel.ShowDialog();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -80,7 +80,6 @@
             this.userIDlb.Size = new System.Drawing.Size(46, 16);
             this.userIDlb.TabIndex = 4;
             this.userIDlb.Text = "userID";
-            this.userIDlb.Click += new System.EventHandler(this.userIDlb_Click);
             // 
             // reporttbl
             // 
@@ -149,7 +148,6 @@
             this.label3.Size = new System.Drawing.Size(95, 16);
             this.label3.TabIndex = 6;
             this.label3.Text = "Total distance:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // distancelb
             // 

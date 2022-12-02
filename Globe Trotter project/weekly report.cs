@@ -23,8 +23,7 @@ namespace Globe_Trotter_project
         }
 
         private void exitbt2_Click(object sender, EventArgs e)
-        {
-            
+        {          
             this.Hide();
             mainfr main = new mainfr(_logid);
             main.ShowDialog();
@@ -69,15 +68,6 @@ namespace Globe_Trotter_project
                 reporttbl.Rows.Add(new object[] { tablerecord[0], tablerecord[1], tablerecord[2], tablerecord[3], tablerecord[4], tablerecord[5] });
             }
             distancelb.Text = (totaldistance + " km").ToString();
-
-        }
-
-        private void userIDlb_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void label3_Click(object sender, EventArgs e)
-        {
 
         }
     }
