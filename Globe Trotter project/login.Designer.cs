@@ -112,7 +112,6 @@
             this.Controls.Add(this.submitbt1);
             this.Name = "loginFr";
             this.Text = "login";
-            this.Load += new System.EventHandler(this.loginFr_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

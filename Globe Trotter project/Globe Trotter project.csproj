@@ -71,9 +71,6 @@
     <Compile Include="main menu.Designer.cs">
       <DependentUpon>main menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Journeyclass.cs" />
-    <Compile Include="Locationclass.cs" />
-    <Compile Include="loginclass.cs" />
     <Compile Include="newEmployee.cs">
       <SubType>Form</SubType>
     </Compile>

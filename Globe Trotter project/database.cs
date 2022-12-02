@@ -27,6 +27,8 @@ namespace Globe_Trotter_project
                 cat.Create(CONNECTION_STRING);
                 createdatabase();
                 loadFrequentLocations();
+                loadbaseusers();
+                loadcommonJourneys();
             }
             else
             {
@@ -53,6 +55,50 @@ namespace Globe_Trotter_project
                 ExecuteSql(_sSqlString);
             }
         }
+        private static void loadbaseusers()
+        {
+            string[] readfirst = File.ReadAllLines("base users.txt");
+            for (int j = 0; j < readfirst.Length; j++)
+            {
+                string line = readfirst[j];
+                string[] read = line.Split(' ');
+                string _sSqlString;
+
+                string EmployeeID = read[0];
+                int EmpPassword = Convert.ToInt32(read[1]);
+                string Surname = read[2];
+
+                _sSqlString = "INSERT INTO Employee(EmployeeID, EmpPassword, Surname) " +
+                       " Values('" + EmployeeID + "','" + EmpPassword + "', '" + Surname + "')";
+                ExecuteSql(_sSqlString);
+            }
+        }
+
+        private static void loadcommonJourneys()
+        {
+            string[] readfirst = File.ReadAllLines("common Journeys.txt");
+            for (int j = 0; j < readfirst.Length; j++)
+            {
+                string line = readfirst[j];
+                string[] read = line.Split(' ');
+                string _sSqlString;
+
+                string JourneyID = read[0];
+                string EmployeeID = read[1];
+                string StartLocalID = read[2];
+                string EndLocalID = read[3];
+                double Distance = Convert.ToDouble(read[4]);
+                string DateofJourney = read[5];
+                string StartTime = read[6];
+                string EndTime = read[7];
+
+                _sSqlString = "INSERT INTO Journey(JourneyID, EmployeeID, StartLocalID, EndLocalID, Distance, DateofJourney, StartTime , EndTime)" +
+                       " Values('" + JourneyID + "','" + EmployeeID + "', '" + StartLocalID + "','" + EndLocalID + "','" + Distance + "','" + DateofJourney + "'" +
+                       ",'" + StartTime + "','" + EndTime + "')";
+                ExecuteSql(_sSqlString);
+            }
+        }
+
         public static void addtoFrequentLocations(string loID, string name, double Locoords, double Lacoords)
         {
             string file = "frequent locations.txt";
@@ -82,7 +128,7 @@ namespace Globe_Trotter_project
                                                + ")";
             ExecuteSql(_sSqlString);
 
-            _sSqlString = "CREATE TABLE Journey ("
+            _sSqlString = "CREATE TABLE Journey("
                                                 + "JourneyID SHORT NOT NULL,"
                                                 + "EmployeeID SHORT,"
                                                 + "StartLocalID SHORT,"
