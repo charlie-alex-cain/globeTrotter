@@ -56,7 +56,7 @@ namespace Globe_Trotter_project
         public static void addtoFrequentLocations(string loID, string name, double Locoords, double Lacoords)
         {
             string file = "frequent locations.txt";
-            string edit = loID + " " + name + " " + Locoords + " " + Lacoords;
+            string edit = loID + " " + name + " " + Lacoords + " " + Locoords;
             StreamWriter SR = new StreamWriter(file, true);
             SR.WriteLine(edit);
             SR.Close();
