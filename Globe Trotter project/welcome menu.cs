@@ -43,5 +43,12 @@ namespace Globe_Trotter_project
             newEmployeeFr newEmp = new newEmployeeFr();
             newEmp.ShowDialog();
         }
+
+        private void changepassbt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            changepassfr newpass = new changepassfr();
+            newpass.ShowDialog();
+        }
     }
 }

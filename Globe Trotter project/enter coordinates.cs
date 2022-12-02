@@ -111,9 +111,6 @@ namespace Globe_Trotter_project
                 string name = locationnametb.Text;
                 string loID = "";              
                 string _lSqlString;
-                string _2SqlString;
- 
-
 
                 _sSqlString = "SELECT LocationID FROM Location ORDER BY LocationID DESC";
                 loID = database.createID(_sSqlString, loID);

@@ -53,6 +53,7 @@
             this.changepassbt.TabIndex = 1;
             this.changepassbt.Text = "Change Password";
             this.changepassbt.UseVisualStyleBackColor = true;
+            this.changepassbt.Click += new System.EventHandler(this.changepassbt_Click);
             // 
             // exitbt
             // 

@@ -53,6 +53,12 @@
     <Compile Include="enter coordinates.Designer.cs">
       <DependentUpon>enter coordinates.cs</DependentUpon>
     </Compile>
+    <Compile Include="change password.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="change password.Designer.cs">
+      <DependentUpon>change password.cs</DependentUpon>
+    </Compile>
     <Compile Include="weekly report.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <EmbeddedResource Include="enter coordinates.resx">
       <DependentUpon>enter coordinates.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="change password.resx">
+      <DependentUpon>change password.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main menu.resx">
       <DependentUpon>main menu.cs</DependentUpon>

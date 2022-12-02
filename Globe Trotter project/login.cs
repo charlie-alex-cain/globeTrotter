@@ -37,7 +37,7 @@ namespace Globe_Trotter_project
             checkpass = Convert.ToInt32(database.ReadSql(_sSqlString));
             
 
-            pass = encrypt_pass(logpass);
+            pass = database.encrypt_pass(logpass);
 
             if (checkpass == pass)
             {
@@ -58,19 +58,7 @@ namespace Globe_Trotter_project
 
 
         }
-        int encrypt_pass(string _pass)
-        {
-            List<char> letters = new List<char>(_pass);
-            int total = 0;
-
-            for (int i = 0; i < letters.Count; i++)
-            {
-                total = total + ((int)letters[i]) * (i + 1);
-
-            }
-            return total;
-
-        }
+      
 
         private void backbt1_Click(object sender, EventArgs e)
         {

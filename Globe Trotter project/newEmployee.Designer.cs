@@ -39,6 +39,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.surnametb = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.backbt4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // submitbt2
@@ -137,11 +138,22 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Surname";
             // 
+            // backbt4
+            // 
+            this.backbt4.Location = new System.Drawing.Point(282, 300);
+            this.backbt4.Name = "backbt4";
+            this.backbt4.Size = new System.Drawing.Size(110, 47);
+            this.backbt4.TabIndex = 13;
+            this.backbt4.Text = "back";
+            this.backbt4.UseVisualStyleBackColor = true;
+            this.backbt4.Click += new System.EventHandler(this.backbt4_Click);
+            // 
             // newEmployeeFr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 365);
+            this.Controls.Add(this.backbt4);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.surnametb);
             this.Controls.Add(this.label6);
@@ -174,5 +186,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox surnametb;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button backbt4;
     }
 }

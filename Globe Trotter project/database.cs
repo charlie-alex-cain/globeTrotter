@@ -42,10 +42,11 @@ namespace Globe_Trotter_project
                 string line = readfirst[j];
                 string[] read = line.Split(' ');
                 string _sSqlString;
+
                 string LocationID = read[0];
                 string LocationName = read[1];
-                double Long_coords = Convert.ToDouble(read[2]);
-                double Lat_coords = Convert.ToDouble(read[3]);
+                double Lat_coords = Convert.ToDouble(read[2]);
+                double Long_coords = Convert.ToDouble(read[3]);
 
                 _sSqlString = "INSERT INTO Location(LocationID, LocationName, Long_coords, Lat_coords) " +
                        " Values('" + LocationID + "','" + LocationName + "', '" + Long_coords + "','" + Lat_coords + "')";
@@ -206,7 +207,16 @@ namespace Globe_Trotter_project
                 return ID;
             }
         }
+        public static int encrypt_pass(string _pass)
+        {
+            List<char> letters = new List<char>(_pass);
+            int total = 0;
+
+            for (int i = 0; i < letters.Count; i++)
+            {
+                total = total + ((int)letters[i]) * (i + 1);
+            }
+            return total;
+        }
     }
-
-
 }
