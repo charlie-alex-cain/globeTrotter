@@ -42,7 +42,7 @@ namespace Globe_Trotter_project
  
             _sSqlString = "SELECT JourneyID, DateofJourney, S.LocationName, E.LocationName, Distance, StartTime, EndTime " +
                 "FROM Journey, Location S, Location E WHERE StartLocalID = S.LocationID AND EndLocalID = E.LocationID AND EmployeeID = " + _logid + " AND " +
-                "DateofJourney BETWEEN Date() AND Date()-7 ORDER BY JourneyID DESC";
+                "DateofJourney BETWEEN Date() AND Date()-7 ORDER BY JourneyID ASC";
 
             tabledata = database.ReadSqls(_sSqlString);
 
