@@ -35,9 +35,7 @@ namespace Globe_Trotter_project
         {
             string checkid = "";
             string _sSqlString;
-            bool done = false;
 
-            string email = emailtb.Text;
             string Surname = surnametb.Text;
             string pass = newpasstb.Text;
             string repeatpass = newRpasstb.Text;
@@ -49,8 +47,8 @@ namespace Globe_Trotter_project
                 checkid = database.createID(_sSqlString, checkid);
 
                 finalpass = database.encrypt_pass(pass);               
-                _sSqlString = "INSERT INTO Employee(EmployeeID, Emppassword, SurName, Email) " +
-                " Values('" + checkid + "', '" + finalpass + "', '" + Surname + "','" + email + "')";
+                _sSqlString = "INSERT INTO Employee(EmployeeID, Emppassword, SurName) " +
+                " Values('" + checkid + "', '" + finalpass + "', '" + Surname + "')";
                 database.ExecuteSql(_sSqlString);
 
                 MessageBox.Show("your employee ID is " + checkid);
@@ -89,6 +87,11 @@ namespace Globe_Trotter_project
             this.Hide();
             welcomeFr wel = new welcomeFr();
             wel.ShowDialog();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

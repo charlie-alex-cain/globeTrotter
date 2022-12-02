@@ -78,7 +78,6 @@ namespace Globe_Trotter_project
                                                + "EmployeeID SHORT NOT NULL,"
                                                + "EmpPassword INT,"
                                                + "Surname VARCHAR(30),"
-                                               + "Email VARCHAR(60),"
                                                + "PRIMARY KEY (EmployeeID)"
                                                + ")";
             ExecuteSql(_sSqlString);
