@@ -56,7 +56,6 @@ namespace Globe_Trotter_project
             string joID = "";
             double Lacoordsstart;
             double Locoordsstart;
-            string coordsID;
 
             if (frequentlocaltickbox.Checked)
             {
@@ -85,18 +84,12 @@ namespace Globe_Trotter_project
                 }
                 if (startcoords == false)
                 {
-                    _sSqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
-                    joID = database.ReadSql(_sSqlString);
-                    // add default system
-
-                    _sSqlString = "SELECT StartLocalID FROM Journey WHERE JourneyID = " + joID;
-                    coordsID = database.ReadSql(_sSqlString);
-
-                    _sSqlString = "SELECT Lat_coords FROM Location WHERE LocationID = " + coordsID;
-                    Lacoordsstart = Convert.ToDouble(database.ReadSql(_sSqlString));
-
-                    _sSqlString = "SELECT Long_coords FROM Location WHERE LocationID = " + coordsID;
-                    Locoordsstart = Convert.ToDouble(database.ReadSql(_sSqlString));
+                    List<List<string>> StartLocationData = new List<List<string>>();
+                    _sSqlString = "SELECT JourneyID, Long_coords, Lat_coords FROM Journey, Location WHERE StartLocalID = LocationID ORDER BY JourneyID DESC";
+                    StartLocationData = database.ReadSqls(_sSqlString);
+                    joID = StartLocationData[0][0];
+                    Locoordsstart = Convert.ToDouble(StartLocationData[0][1]);
+                    Lacoordsstart = Convert.ToDouble(StartLocationData[0][2]);
 
                     distance = calcdistance(Lacoordsstart, Locoordsstart, Lacoords, Locoords);
 
@@ -156,18 +149,12 @@ namespace Globe_Trotter_project
 
                 if (startcoords == false)
                 {
-                    _2SqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
-                    joID = database.ReadSql(_2SqlString);
-                    // add default system
-
-                    _2SqlString = "SELECT StartLocalID FROM Journey WHERE JourneyID = " + joID;
-                    coordsID = database.ReadSql(_2SqlString);
-
-                    _2SqlString = "SELECT Lat_coords FROM Location WHERE LocationID = " + coordsID;
-                    Lacoordsstart = Convert.ToDouble(database.ReadSql(_2SqlString));
-
-                    _2SqlString = "SELECT Long_coords FROM Location WHERE LocationID = " + coordsID;
-                    Locoordsstart = Convert.ToDouble(database.ReadSql(_2SqlString));
+                    List<List<string>> StartLocationData = new List<List<string>>();
+                    _sSqlString = "SELECT JourneyID, Long_coords, Lat_coords FROM Journey, Location WHERE StartLocalID = LocationID ORDER BY JourneyID DESC";
+                    StartLocationData = database.ReadSqls(_sSqlString);
+                    joID = StartLocationData[0][0];
+                    Locoordsstart = Convert.ToDouble(StartLocationData[0][1]);
+                    Lacoordsstart = Convert.ToDouble(StartLocationData[0][2]);
 
                     distance = calcdistance(Lacoordsstart, Locoordsstart, Lacoords, Locoords);
 

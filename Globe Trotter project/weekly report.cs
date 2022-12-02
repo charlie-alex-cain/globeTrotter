@@ -31,8 +31,7 @@ namespace Globe_Trotter_project
         }
 
         private void weekreportfr_Load(object sender, EventArgs e)
-        {
-            
+        {           
             string _sSqlString;
             double totaldistance = 0;
             double unitdistance;
