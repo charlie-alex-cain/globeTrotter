@@ -51,6 +51,7 @@ namespace Globe_Trotter_project
             string joID = "";
             double Lacoordsstart;
             double Locoordsstart;
+            
 
             if (frequentlocaltickbox.Checked)
             {
@@ -66,17 +67,13 @@ namespace Globe_Trotter_project
                     _sSqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
                     joID = database.createID(_sSqlString, joID);
 
-                }
-
-                if (startcoords == true)
-                {
-
                     _sSqlString = "INSERT INTO Journey(JourneyID, EmployeeID, StartLocalID, DateofJourney, StartTime) " +
                     " Values('" + joID + "','" + _logid + "', '" + start_end + "','" + date + "','" + time + "')";
                     database.ExecuteSql(_sSqlString);
 
                     startcoordstickbox.Checked = false;
                 }
+
                 if (startcoords == false)
                 {
                     List<List<string>> StartLocationData = new List<List<string>>();
@@ -103,11 +100,27 @@ namespace Globe_Trotter_project
             }
             else
             {
+                if (long_coordstb.Text == "" || lat_coordstb.Text == "")
+                {
+                    long_coordstb.Clear();
+                    lat_coordstb.Clear();
+                    MessageBox.Show("the coordinates you entered where invalid please try again");             
+                    return;
+                }
+
                 Locoords = Convert.ToDouble(long_coordstb.Text);
                 Lacoords = Convert.ToDouble(lat_coordstb.Text);
                 string name = locationnametb.Text;
                 string loID = "";              
                 string _lSqlString;
+
+                if (Locoords > 90 || Locoords < -90 || Lacoords > 180 || Lacoords < -180)
+                {
+                    long_coordstb.Clear();
+                    lat_coordstb.Clear();
+                    MessageBox.Show("the coordinates you entered where invalid please try again");
+                    return;
+                }
 
                 _sSqlString = "SELECT LocationID FROM Location ORDER BY LocationID DESC";
                 loID = database.createID(_sSqlString, loID);
@@ -127,12 +140,6 @@ namespace Globe_Trotter_project
                 {
                     _lSqlString = "SELECT JourneyID FROM Journey ORDER BY JourneyID DESC";
                     joID = database.createID(_lSqlString, joID);
-
-                }
-
-
-                if (startcoords == true)
-                {
 
                     _sSqlString = "INSERT INTO Journey(JourneyID, EmployeeID, StartLocalID, DateofJourney, StartTime) " +
                     " Values('" + joID + "','" + _logid + "', '" + start_end + "','" + date + "','" + time + "')";
