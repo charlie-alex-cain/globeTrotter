@@ -56,11 +56,7 @@ namespace Globe_Trotter_project
 
                 tablerecord[1] = tablerecord[1].Substring(0, 10);
 
-                unitdistance = Convert.ToDouble(tablerecord[4]) * 1.852;
-                unitdistance = Math.Round(unitdistance, 2);
-                tablerecord[4] = unitdistance.ToString();
-                totaldistance += Convert.ToDouble(tablerecord[4]);
-                tablerecord[4] = unitdistance + " km";
+                tablerecord[4] = tablerecord[4] + " km";
 
                 dt = Convert.ToDateTime(tablerecord[6]) - Convert.ToDateTime(tablerecord[5]);
                 tablerecord[5] = dt.ToString();

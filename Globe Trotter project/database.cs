@@ -104,7 +104,8 @@ namespace Globe_Trotter_project
             string file = "frequent locations.txt";
             string edit = loID + " " + name + " " + Lacoords + " " + Locoords;
             StreamWriter SR = new StreamWriter(file, true);
-            SR.WriteLine(edit);
+            SR.WriteLine("");
+            SR.Write(edit);
             SR.Close();
         }
         private static void createdatabase()

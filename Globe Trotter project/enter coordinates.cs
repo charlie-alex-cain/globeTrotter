@@ -38,8 +38,8 @@ namespace Globe_Trotter_project
         
         private void submitbt3_Click(object sender, EventArgs e)
         {
-            double Locoords;
-            double Lacoords;
+            double Locoords=0;
+            double Lacoords=0;
             int start_end;
             bool startcoords = startcoordstickbox.Checked;
             DateTime dt = DateTime.Now;
@@ -51,7 +51,9 @@ namespace Globe_Trotter_project
             string joID = "";
             double Lacoordsstart;
             double Locoordsstart;
-            
+            string name = "";
+
+
 
             if (frequentlocaltickbox.Checked)
             {
@@ -64,18 +66,30 @@ namespace Globe_Trotter_project
             }
             else
             {
-                if (long_coordstb.Text == "" || lat_coordstb.Text == "")
+                if (long_coordstb.Text == "" || lat_coordstb.Text == "" || locationnametb.Text == "")
                 {
                     long_coordstb.Clear();
                     lat_coordstb.Clear();
-                    MessageBox.Show("the coordinates you entered where invalid please try again");             
+                    locationnametb.Clear();
+                    MessageBox.Show("cordinates or location name where not valid please try again");             
                     return;
                 }
+                try
+                {
+                    Locoords = Convert.ToDouble(long_coordstb.Text);
+                    Lacoords = Convert.ToDouble(lat_coordstb.Text);
+                    name = locationnametb.Text;                  
+                }
+                catch
+                {
+                    lat_coordstb.Clear();
+                    long_coordstb.Clear();
+                    locationnametb.Clear();
+                    MessageBox.Show("cordinates or location name where not valid please try again");
+                    return;
+                }
+                string loID = "";
 
-                Locoords = Convert.ToDouble(long_coordstb.Text);
-                Lacoords = Convert.ToDouble(lat_coordstb.Text);
-                string name = locationnametb.Text;
-                string loID = "";              
 
                 if (Locoords > 90 || Locoords < -90 || Lacoords > 180 || Lacoords < -180)
                 {
@@ -151,6 +165,7 @@ namespace Globe_Trotter_project
             double distance;
 
             distance = earthcircumfrence * Math.Acos((Math.Sin(lat1R) * Math.Sin(lat2R)) + Math.Cos(lat1R) * Math.Cos(lat2R) * Math.Cos(lon1R - lon2R));
+            distance = distance * 1.852;
             distance = Math.Round(distance, 2);
             return distance;
         }
