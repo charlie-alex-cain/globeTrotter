@@ -72,6 +72,7 @@ namespace Globe_Trotter_project
                     database.ExecuteSql(_sSqlString);
 
                     startcoordstickbox.Checked = false;
+                    start_endlb.Text = "coordinates entered will be for END location";
                 }
 
                 if (startcoords == false)
@@ -146,6 +147,7 @@ namespace Globe_Trotter_project
                     database.ExecuteSql(_sSqlString);
 
                     startcoordstickbox.Checked = false;
+                    start_endlb.Text = "coordinates entered will be for END location";
                 }
 
                 if (startcoords == false)
@@ -193,7 +195,18 @@ namespace Globe_Trotter_project
         {
             freqlocalgb.Hide();
 
+            startcoordstickbox.Hide();
+            startcoordstickbox.Checked = true;
             string _sSqlString;
+            string check;
+            _sSqlString = "SELECT EndLocalID FROM Journey WHERE EmployeeID = " + _logid + " ORDER BY JourneyID DESC";
+            check = database.ReadSql(_sSqlString);
+            if (check == "")
+            {
+                startcoordstickbox.Checked = false;
+                start_endlb.Text = "coordinates entered will be for END location";
+            }
+
             int numrecords;
             List<List<string>> locationlist = new List<List<string>>();       
             _sSqlString = "SELECT LocationName FROM Location ORDER BY LocationName ASC";
