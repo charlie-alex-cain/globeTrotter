@@ -33,7 +33,6 @@ namespace Globe_Trotter_project
         {           
             string _sSqlString;
             double totaldistance = 0;
-            double unitdistance;
             TimeSpan dt;
             List<List<string>> tabledata = new List<List<string>>();
 
@@ -56,6 +55,7 @@ namespace Globe_Trotter_project
 
                 tablerecord[1] = tablerecord[1].Substring(0, 10);
 
+                totaldistance += Convert.ToDouble(tablerecord[4]);
                 tablerecord[4] = tablerecord[4] + " km";
 
                 dt = Convert.ToDateTime(tablerecord[6]) - Convert.ToDateTime(tablerecord[5]);
