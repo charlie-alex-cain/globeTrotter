@@ -37,11 +37,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.oldpasstb = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // submitbt4
             // 
-            this.submitbt4.Location = new System.Drawing.Point(18, 206);
+            this.submitbt4.Location = new System.Drawing.Point(18, 243);
             this.submitbt4.Name = "submitbt4";
             this.submitbt4.Size = new System.Drawing.Size(110, 53);
             this.submitbt4.TabIndex = 0;
@@ -51,7 +53,7 @@
             // 
             // backbt3
             // 
-            this.backbt3.Location = new System.Drawing.Point(190, 206);
+            this.backbt3.Location = new System.Drawing.Point(195, 243);
             this.backbt3.Name = "backbt3";
             this.backbt3.Size = new System.Drawing.Size(110, 53);
             this.backbt3.TabIndex = 1;
@@ -61,14 +63,14 @@
             // 
             // rnewpasstb
             // 
-            this.rnewpasstb.Location = new System.Drawing.Point(18, 162);
+            this.rnewpasstb.Location = new System.Drawing.Point(18, 196);
             this.rnewpasstb.Name = "rnewpasstb";
             this.rnewpasstb.Size = new System.Drawing.Size(215, 22);
             this.rnewpasstb.TabIndex = 2;
             // 
             // newpasstb
             // 
-            this.newpasstb.Location = new System.Drawing.Point(18, 114);
+            this.newpasstb.Location = new System.Drawing.Point(18, 152);
             this.newpasstb.Name = "newpasstb";
             this.newpasstb.Size = new System.Drawing.Size(215, 22);
             this.newpasstb.TabIndex = 3;
@@ -85,23 +87,23 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(130, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 20);
+            this.label1.Size = new System.Drawing.Size(78, 16);
             this.label1.TabIndex = 5;
             this.label1.Text = "globe trotter";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 139);
+            this.label2.Location = new System.Drawing.Point(12, 177);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(169, 20);
+            this.label2.Size = new System.Drawing.Size(135, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "repeat new password";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 91);
+            this.label3.Location = new System.Drawing.Point(15, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 16);
             this.label3.TabIndex = 7;
@@ -112,15 +114,33 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(15, 32);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 20);
+            this.label4.Size = new System.Drawing.Size(49, 16);
             this.label4.TabIndex = 8;
             this.label4.Text = "user ID";
+            // 
+            // oldpasstb
+            // 
+            this.oldpasstb.Location = new System.Drawing.Point(18, 108);
+            this.oldpasstb.Name = "oldpasstb";
+            this.oldpasstb.Size = new System.Drawing.Size(215, 22);
+            this.oldpasstb.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 89);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(110, 20);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "old password";
             // 
             // changepassfr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(317, 264);
+            this.ClientSize = new System.Drawing.Size(317, 308);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.oldpasstb);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -148,5 +168,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox oldpasstb;
+        private System.Windows.Forms.Label label5;
     }
 }

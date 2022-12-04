@@ -37,23 +37,40 @@ namespace Globe_Trotter_project
                     correct = true;
                 }
             }
+
             if (correct)
             {
-                if (pass == rpass)
-                {
-                    finalnewpass = database.encrypt_pass(pass);
-                    _sSqlString = "UPDATE Employee SET EmpPassword = " + finalnewpass + " WHERE EmployeeID = " + ID;
-                    database.ExecuteSql(_sSqlString);
+                string oldpass = oldpasstb.Text;
+                int encryptoldpass;
+                int oldpasscheck;
+                encryptoldpass = database.encrypt_pass(oldpass);
+                _sSqlString = "SELECT EmpPassword FROM Employee WHERE EmployeeID = " + ID;
+                oldpasscheck = Convert.ToInt32(database.ReadSql(_sSqlString));
 
-                    this.Hide();
-                    welcomeFr wel = new welcomeFr();
-                    wel.ShowDialog();
+                if (encryptoldpass == oldpasscheck)
+                {
+                    if (pass == rpass)
+                    {
+                        finalnewpass = database.encrypt_pass(pass);
+                        _sSqlString = "UPDATE Employee SET EmpPassword = " + finalnewpass + " WHERE EmployeeID = " + ID;
+                        database.ExecuteSql(_sSqlString);
+
+                        MessageBox.Show("your password was changed successfully");
+                        this.Hide();
+                        welcomeFr wel = new welcomeFr();
+                        wel.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("your password and reapet password do not match please enter identical passwords");
+                        newpasstb.Clear();
+                        rnewpasstb.Clear();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("your password and reapet password do not match please enter identical passwords");
-                    newpasstb.Clear();
-                    rnewpasstb.Clear();
+                    MessageBox.Show("your old password was incorrect please try again");
+                    oldpasstb.Clear();
                 }
             }
             else

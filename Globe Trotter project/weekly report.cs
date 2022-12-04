@@ -22,7 +22,7 @@ namespace Globe_Trotter_project
             _logid = logid;
         }
 
-        private void exitbt2_Click(object sender, EventArgs e)
+        private void backbt5_Click(object sender, EventArgs e)
         {          
             this.Hide();
             mainfr main = new mainfr(_logid);

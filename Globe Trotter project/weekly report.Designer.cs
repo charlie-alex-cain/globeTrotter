@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.exitbt2 = new System.Windows.Forms.Button();
+            this.backbt5 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.userIDlb = new System.Windows.Forms.Label();
@@ -44,15 +44,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.reporttbl)).BeginInit();
             this.SuspendLayout();
             // 
-            // exitbt2
+            // backbt5
             // 
-            this.exitbt2.Location = new System.Drawing.Point(941, 14);
-            this.exitbt2.Name = "exitbt2";
-            this.exitbt2.Size = new System.Drawing.Size(122, 50);
-            this.exitbt2.TabIndex = 0;
-            this.exitbt2.Text = "exit";
-            this.exitbt2.UseVisualStyleBackColor = true;
-            this.exitbt2.Click += new System.EventHandler(this.exitbt2_Click);
+            this.backbt5.Location = new System.Drawing.Point(941, 14);
+            this.backbt5.Name = "backbt5";
+            this.backbt5.Size = new System.Drawing.Size(122, 50);
+            this.backbt5.TabIndex = 0;
+            this.backbt5.Text = "back";
+            this.backbt5.UseVisualStyleBackColor = true;
+            this.backbt5.Click += new System.EventHandler(this.backbt5_Click);
             // 
             // label1
             // 
@@ -169,7 +169,7 @@
             this.Controls.Add(this.userIDlb);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.exitbt2);
+            this.Controls.Add(this.backbt5);
             this.Name = "weekreportfr";
             this.Text = "weekly report";
             this.Load += new System.EventHandler(this.weekreportfr_Load);
@@ -181,7 +181,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button exitbt2;
+        private System.Windows.Forms.Button backbt5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label userIDlb;
