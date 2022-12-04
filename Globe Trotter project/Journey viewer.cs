@@ -41,10 +41,6 @@ namespace Globe_Trotter_project
 
             for (int i = 0; i < numrecords; i++)
             {
-                //if (IDlist[i] = "")
-                //{
-                //    break;
-                //}
                 List<string> locallist = IDlist[i];
                 idlist[i] = locallist[0];
 

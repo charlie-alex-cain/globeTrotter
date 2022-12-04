@@ -70,8 +70,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.journeyfinderwb);
-            this.splitContainer1.Size = new System.Drawing.Size(855, 507);
-            this.splitContainer1.SplitterDistance = 217;
+            this.splitContainer1.Size = new System.Drawing.Size(822, 485);
+            this.splitContainer1.SplitterDistance = 218;
             this.splitContainer1.TabIndex = 0;
             // 
             // backbt6
@@ -189,9 +189,9 @@
             this.enteridgb.Controls.Add(this.journeyiddd);
             this.enteridgb.Controls.Add(this.submitbt5);
             this.enteridgb.Controls.Add(this.label4);
-            this.enteridgb.Location = new System.Drawing.Point(6, 50);
+            this.enteridgb.Location = new System.Drawing.Point(6, 45);
             this.enteridgb.Name = "enteridgb";
-            this.enteridgb.Size = new System.Drawing.Size(203, 49);
+            this.enteridgb.Size = new System.Drawing.Size(203, 61);
             this.enteridgb.TabIndex = 11;
             this.enteridgb.TabStop = false;
             // 
@@ -230,7 +230,7 @@
             this.journeyfinderwb.Location = new System.Drawing.Point(0, 0);
             this.journeyfinderwb.MinimumSize = new System.Drawing.Size(20, 20);
             this.journeyfinderwb.Name = "journeyfinderwb";
-            this.journeyfinderwb.Size = new System.Drawing.Size(634, 507);
+            this.journeyfinderwb.Size = new System.Drawing.Size(600, 485);
             this.journeyfinderwb.TabIndex = 0;
             // 
             // journeyiddd
@@ -245,7 +245,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 507);
+            this.ClientSize = new System.Drawing.Size(822, 485);
             this.Controls.Add(this.splitContainer1);
             this.Name = "journeyviewfr";
             this.Text = "Journey viewer";
