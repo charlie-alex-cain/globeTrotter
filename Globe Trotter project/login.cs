@@ -23,12 +23,19 @@ namespace Globe_Trotter_project
             string logpass = passwordtb.Text;
             string logid = loginIDtb.Text;
             int pass;
-            int checkpass;
+            int checkpass=0;
             string _sSqlString;
-         
-            _sSqlString = "SELECT EmpPassword FROM Employee WHERE EmployeeID = " + logid;
-           
-            checkpass = Convert.ToInt32(database.ReadSql(_sSqlString));
+            try
+            {
+                _sSqlString = "SELECT EmpPassword FROM Employee WHERE EmployeeID = " + logid;
+                checkpass = Convert.ToInt32(database.ReadSql(_sSqlString));
+            }
+            catch
+            {
+                MessageBox.Show("you haven't entered anything");
+                return;
+            }
+
             if (checkpass == 0)
             {
                 MessageBox.Show("your ID or password was incorrect please re-enter them");
