@@ -126,6 +126,8 @@ namespace Globe_Trotter_project
 
                 startcoordstickbox.Checked = false;
                 start_endlb.Text = "coordinates entered will be for END location";
+
+                MessageBox.Show("your JourneyID is " + joID);
             }
 
             if (startcoords == false)

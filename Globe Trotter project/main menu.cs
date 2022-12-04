@@ -38,5 +38,12 @@ namespace Globe_Trotter_project
             weekreportfr report = new weekreportfr(_logid);
             report.ShowDialog();
         }
+
+        private void journeyviewbt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            journeyviewfr view = new journeyviewfr(_logid);
+            view.ShowDialog();
+        }
     }
 }

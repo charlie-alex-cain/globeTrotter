@@ -59,6 +59,12 @@
     <Compile Include="change password.Designer.cs">
       <DependentUpon>change password.cs</DependentUpon>
     </Compile>
+    <Compile Include="Journey viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Journey viewer.Designer.cs">
+      <DependentUpon>Journey viewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="weekly report.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="change password.resx">
       <DependentUpon>change password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Journey viewer.resx">
+      <DependentUpon>Journey viewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main menu.resx">
       <DependentUpon>main menu.cs</DependentUpon>
