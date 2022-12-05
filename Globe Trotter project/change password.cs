@@ -56,6 +56,7 @@ namespace Globe_Trotter_project
                         database.ExecuteSql(_sSqlString);
 
                         MessageBox.Show("your password was changed successfully");
+
                         this.Hide();
                         welcomeFr wel = new welcomeFr();
                         wel.ShowDialog();

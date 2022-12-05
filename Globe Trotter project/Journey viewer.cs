@@ -90,10 +90,10 @@ namespace Globe_Trotter_project
                 latend = journeydata[0][5];
                 lonend = journeydata[0][6];
 
-                webcallcoords = "https://maps.googleapis.com/maps/api/staticmap?&size=425x360&markers=size:mid%7Ccolor:red%7C" + latstart + "," +
-                    lonstart + "%7C" + latend + "," + lonend + "&path=color:purple%7C" + latstart + "," + lonstart + "%7C" + latend + "," + lonend +
-                    "&key=AIzaSyDrem7PePLwZum3Ed9kCZNAZ1EsYjFVpCY";
-                journeyfinderwb.Navigate(webcallcoords);
+                //webcallcoords = "https://maps.googleapis.com/maps/api/staticmap?&size=425x360&markers=size:mid%7Ccolor:red%7C" + latstart + "," +
+                //    lonstart + "%7C" + latend + "," + lonend + "&path=color:darkblue%7C" + latstart + "," + lonstart + "%7C" + latend + "," + lonend +
+                //    "&key=AIzaSyDrem7PePLwZum3Ed9kCZNAZ1EsYjFVpCY";
+                //journeyfinderwb.Navigate(webcallcoords);
 
                 location1lb.Text = journeydata[0][1];
                 location2lb.Text = journeydata[0][4];
