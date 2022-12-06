@@ -23,8 +23,8 @@ namespace Globe_Trotter_project
             string logpass = passwordtb.Text;
             string logid = loginIDtb.Text;
             int pass;
-            int checkpass=0;
             string _sSqlString;
+            int checkpass;
             try
             {
                 _sSqlString = "SELECT EmpPassword FROM Employee WHERE EmployeeID = " + logid;

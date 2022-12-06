@@ -82,7 +82,6 @@ namespace Globe_Trotter_project
                 string line = readfirst[j];
                 string[] read = line.Split(' ');
                 string _sSqlString;
-
                 string JourneyID = read[0];
                 string EmployeeID = read[1];
                 string StartLocalID = read[2];
@@ -194,7 +193,7 @@ namespace Globe_Trotter_project
                             return null;
                         }
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         return "error1";
                     }
@@ -227,7 +226,7 @@ namespace Globe_Trotter_project
                         }
                         return Results;
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         List<List<string>> Results = new List<List<string>>();
                         Console.WriteLine("error2");

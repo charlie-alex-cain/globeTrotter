@@ -130,7 +130,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(15, 89);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 20);
+            this.label5.Size = new System.Drawing.Size(88, 16);
             this.label5.TabIndex = 10;
             this.label5.Text = "old password";
             // 
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(317, 308);
+            this.ClientSize = new System.Drawing.Size(314, 304);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.oldpasstb);
             this.Controls.Add(this.label4);

@@ -198,8 +198,8 @@ namespace Globe_Trotter_project
 
             for (int i = 0; i < numrecords; i++)
             {
-                List<string> locallistp = locationlist[i];
-                locallist[i] = locallistp[0];
+                List<string> locallisttemp = locationlist[i];
+                locallist[i] = locallisttemp[0];
 
             }
             freqlocaldd.Items.AddRange(locallist);
